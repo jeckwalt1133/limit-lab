@@ -1,0 +1,2 @@
+{"timestamp": "2026-05-19T23:24:22.945791", "event": "design_to_exec_converted", "experiment_id": "gen-100", "output": "D:\\极限实验室\\workspace\\evolution\\experiments\\EXP-004-template-directed-evolution.py", "type": "T4", "degrade_level": "L1", "stub_gaps": true, "sla_remaining_hours": 30.2}
+{"timestamp": "2026-05-19T23:38:20.960484", "event": "design_to_exec_converted", "experiment_id": "EXP-005", "output": "D:\\极限实验室\\workspace\\evolution\\experiments\\EXP-005-godel-leap.py", "type": "T4", "degrade_level": "L1", "stub_gaps": true, "sla_remaining_hours": 48.0}

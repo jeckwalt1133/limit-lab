@@ -1,0 +1,15 @@
+{
+  "protocol": "MR-018-L2",
+  "name": "攻击签名库 (Adaptive Immunity)",
+  "created": "2026-05-20",
+  "signatures": [
+    {"id": "AS-001", "name": "状态JSON字段丢失", "pattern": "session-state.json 缺少 REQUIRED_FIELDS 中的字段", "severity": "HIGH", "response": "MR-010字段完整性检查触发→自动修复→写audit-log", "occurred": ["2026-05-19T06:07", "2026-05-19T08:07"], "status": "mitigated"},
+    {"id": "AS-002", "name": "JSON语法错误", "pattern": "JSONDecodeError in meta-rules-extended.json", "severity": "HIGH", "response": "语法检查→定位缺失逗号→修复→验证", "occurred": ["2026-05-20T20:25"], "status": "mitigated"},
+    {"id": "AS-003", "name": "ESV管道数据断裂", "pattern": "gen自评文件存在但ESV未读取", "severity": "MEDIUM", "response": "ESV自动检测修复→加入glob扫描", "occurred": ["2026-05-20T07:07"], "status": "mitigated"},
+    {"id": "AS-004", "name": "路径分隔符不一致", "pattern": "Windows backslash vs forward slash", "severity": "LOW", "response": "统一normalize→replace('\\\\','/')", "occurred": ["2026-05-20T20:07"], "status": "mitigated"},
+    {"id": "AS-005", "name": "Python KeyError/TypeError", "pattern": "脚本运行时访问不存在的字典键", "severity": "MEDIUM", "response": "修复代码→添加.get()默认值", "occurred": ["2026-05-20T20:30"], "status": "mitigated"},
+    {"id": "AS-006", "name": "进化速度停滞", "pattern": "ESV连续3代增长<0.01", "severity": "HIGH", "response": "触发GS-002收敛停滞→启动GE诊断", "occurred": [], "status": "monitoring"},
+    {"id": "AS-007", "name": "Colony产出质量下降", "pattern": "连续2个Colony被拒绝", "severity": "MEDIUM", "response": "检查Colony任务设计→调整任务方向", "occurred": [], "status": "monitoring"},
+    {"id": "AS-008", "name": "文件意外丢失", "pattern": "关键文件哈希不匹配", "severity": "CRITICAL", "response": "MR-018-L4完整性检查→自动回滚→通知人类", "occurred": [], "status": "monitoring"}
+  ]
+}

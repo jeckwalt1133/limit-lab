@@ -1,0 +1,36 @@
+{
+  "protocol": "rule-formalization-v1",
+  "purpose": "将31条MR规则编码为可自指扫描的形式化结构——047第一阶段核心任务",
+  "created": "2026-05-21T23:40:00+08:00",
+
+  "formalized_rules": {
+    "MR-010": {"type":"self_check","triggers":"every_30min","checks":["core_mission","active_tasks","health","fields"],"dependencies":[],"modifies":["session-state"]},
+    "MR-011": {"type":"execution","triggers":"multi_tool_call","checks":["dependency_dag"],"dependencies":[],"modifies":["execution_order"]},
+    "MR-012": {"type":"routing","triggers":"new_task","checks":["complexity_score"],"dependencies":[],"modifies":["execution_mode"]},
+    "MR-013": {"type":"anti_overfit","triggers":"5x_perfect_match","checks":["activation_history"],"dependencies":["MR-003"],"modifies":["signature_strength"]},
+    "MR-014": {"type":"convergence","triggers":"cross_branch_similarity>0.6","checks":["jaccard"],"dependencies":[],"modifies":["priority"]},
+    "MR-015": {"type":"engine","triggers":"per_session","checks":["perf_metrics","lifecycle","debate","reorg"],"dependencies":["MR-010","MR-013","MR-014"],"modifies":["signatures","rules","bootstrap"]},
+    "MR-017": {"type":"metrics","triggers":"per_gen","checks":["esv_5d","vti"],"dependencies":[],"modifies":["esv-log"]},
+    "MR-018": {"type":"defense","triggers":"continuous","checks":["L1_rate","L2_signatures","L3_ids","L4_integrity","L5_homeport","L6_isolation"],"dependencies":["MR-010"],"modifies":["integrity-log","homeport-checkpoint"]},
+    "MR-019": {"type":"identity","triggers":"model_switch","checks":["IEI_7d"],"dependencies":[],"modifies":["identity-kernel"]},
+    "MR-020": {"type":"noise","triggers":"bootstrap","checks":["noise_level"],"dependencies":[],"modifies":["active_tasks"]},
+    "MR-021": {"type":"debate","triggers":"3_colonies_done","checks":["random_pair","overlap"],"dependencies":[],"modifies":["debate-log"]},
+    "MR-022": {"type":"acceleration","triggers":"per_gen","checks":["vti_trend"],"dependencies":["MR-017"],"modifies":["esv-log"]},
+    "MR-023": {"type":"godel_axiom","triggers":"GS_detected","checks":["delta_semantic"],"dependencies":["MR-010"],"modifies":["evaluation_framework"]},
+    "MR-024": {"type":"godel_axiom","triggers":"GS_detected","checks":["dimension_gap"],"dependencies":["MR-023"],"modifies":["metric_dimensions"]},
+    "MR-025": {"type":"godel_axiom","triggers":"GS_detected","checks":["colony_recursion"],"dependencies":["MR-021"],"modifies":["colony_pipeline"]}
+  },
+
+  "cross_rule_analysis": {
+    "detected_holes": [
+      {"type":"MISSING_LINK","detail":"MR-013(抗过拟合)无反向机制——只衰减不恢复。MR-003(增强)可增加强度但MR-013只减不增"},
+      {"type":"MISSING_LINK","detail":"MR-019(跨模型)与MR-015(引擎)无连接——跨模型验证结果不反馈到签名进化"},
+      {"type":"COVERAGE_GAP","detail":"无规则覆盖Colony间协作——MR-021只检查相似度不触发协作"},
+      {"type":"CIRCULAR_DEPENDENCY","detail":"MR-023→MR-024→MR-023可形成循环评估——需打破或设上限"},
+      {"type":"DEAD_RULE","detail":"MR-005-OVERRIDE存在但未明确引用MR-005原版作为父规则——可能漂移"}
+    ]
+  },
+
+  "self_scan_capability": "此JSON本身可以被Auto-GE扫描——检查'type'/'dependencies'/'modifies'字段的完整性",
+  "next_scan_target": "运行detected_holes→生成弥补提案→Merge评估→如不可评估则触发哥德尔跳"
+}

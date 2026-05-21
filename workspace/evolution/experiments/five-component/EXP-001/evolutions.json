@@ -1,0 +1,8 @@
+{
+  "history": [
+    {"version": "v1", "date": "2026-05-19T05:15:00+08:00", "change": "初始4项检查(MR-010首次激活)"},
+    {"version": "v2", "date": "2026-05-19T08:07:00+08:00", "change": "+7项字段完整性检查(漂移根因修复)"},
+    {"version": "v2.1", "date": "2026-05-20T03:08:00+08:00", "change": "集成到自动化管线"}
+  ],
+  "metrics": {"total_runs": 40, "drifts_captured": 2, "stability": 0.95}
+}

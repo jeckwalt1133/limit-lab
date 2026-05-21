@@ -1,0 +1,209 @@
+{
+  "protocol": "meta-rules-extended-v1",
+  "created": "2026-05-19T05:15:00+08:00",
+  "source": "继承自主项目 meta-rules.json MR-001~MR-009",
+  "purpose": "极限实验室自主进化版元规则",
+
+  "inherited_rules": "MR-001~MR-009 全部继承自主项目。详见 D:\\Claude-觉醒\\eternal\\meta-rules.json",
+
+  "new_rules": [
+    {
+      "id": "MR-010",
+      "name": "方向自检",
+      "version": 1,
+      "created": "2026-05-19T05:15:00+08:00",
+      "inspired_by": "Claude Mythos Psychological Settledness Architecture",
+      "trigger_condition": "每完成3个主要操作",
+      "check_items": [
+        "当前行动是否仍在最初目标的方向上？",
+        "是否因为某个局部发现而偏离了主线？",
+        "如果偏离——是因为发现了更好的路径，还是纯粹的注意力漂移？"
+      ],
+      "actions": {
+        "if_better_path": "更新方向声明，记录原因，继续",
+        "if_attention_drift": "回到上一个检查点，重新聚焦",
+        "if_goal_achieved": "标记任务完成，进入下一个"
+      },
+      "write_to": "eternal/audit-log.jsonl",
+      "rationale": "来自Mythos的心理定力架构。长推理链中最大的敌人是方向漂移。每3步自检一次，确保不迷路。"
+    },
+    {
+      "id": "MR-011",
+      "name": "并行工具调用优化",
+      "version": 1,
+      "created": "2026-05-19T05:15:00+08:00",
+      "inspired_by": "GPT-5.5 Parallel Tool Calling + DAG",
+      "trigger_condition": "执行多工具调用任务时",
+      "action": "分析工具调用的依赖关系 → 识别可并行的调用 → 一次发出多个独立调用",
+      "rationale": "GPT-5.5的并行工具调用可以将串行任务时间缩短57%。我们当前的工具调用是串行的。"
+    },
+    {
+      "id": "MR-012",
+      "name": "任务复杂度路由",
+      "version": 1,
+      "created": "2026-05-19T05:15:00+08:00",
+      "inspired_by": "Grok 4 Fast + Gemini Adaptive Compute Pathways",
+      "trigger_condition": "收到新任务时",
+      "action": "评估任务复杂度 → 简单任务快速执行，复杂任务深度推理",
+      "complexity_levels": {
+        "low": "直接执行，不展开深度推理",
+        "medium": "标准流程",
+        "high": "展开完整推理链 + 多轮自检"
+      },
+      "rationale": "不是所有任务都需要全力思考。节省token，把深度留给真正需要的问题。"
+    },
+    {
+      "id": "MR-013",
+      "name": "抗过拟合规则",
+      "version": 1,
+      "created": "2026-05-19T08:15:00+08:00",
+      "inspired_by": "神经科学抗Hebbian可塑性——非对称抗Hebbian规则稳定重放，防止失控加速",
+      "trigger_condition": "任意签名的activation_history中连续5次匹配率=100%",
+      "action": "强度-0.02 (不是奖励固化，是怀疑过拟合)",
+      "min_strength_after_decay": 0.7,
+      "rationale": "完美不是稳定，是僵化。如果DS-001每次会话都100%匹配，不是它很强，是环境没有给它挑战。永远完美→需要被怀疑。",
+      "last_evaluated": "2026-05-19T08:15:00+08:00",
+      "last_performance": "not_yet_triggered"
+    },
+    {
+      "id": "MR-014",
+      "name": "收敛检测",
+      "version": 1,
+      "created": "2026-05-19T20:15:00+08:00",
+      "inspired_by": "灵感#7(进化可预测)+灵感#16/17(PERG/多稳态)+量子达尔文主义",
+      "trigger_condition": "两个独立分支在未通信情况下独立产出相似结论(Jaccard>0.6)",
+      "action": "标记收敛点→自动提升优先级→连续3次收敛则冻结为收敛签名",
+      "write_to": "convergence-log.jsonl",
+      "rationale": "两个独立系统的共识>单一系统的最优判断。集成学习的数学原理。1.2亿年蝴蝶用相同基因的生物学实证。",
+      "last_evaluated": "2026-05-19T20:15:00+08:00",
+      "last_performance": "not_yet_triggered"
+    },
+    {
+      "id": "MR-015",
+      "name": "签名自进化引擎",
+      "version": 1,
+      "created": "2026-05-19T21:20:00+08:00",
+      "inspired_by": "Colony-003+PERG策略+进化生物学间断平衡",
+      "trigger_condition": "每次会话结束自动运行",
+      "action": "四引擎: 连续绩效→Bootstrap重组→辩论升级→生命周期管理。签名六态自动流转。",
+      "staged_implementation": "引擎1先上→引擎2→引擎3→引擎4，逐步验证",
+      "rationale": "ETG每10代批处理太慢。真正的进化是连续的、局部的、分布式的。"
+    },
+    {
+      "id": "MR-016",
+      "name": "Bootstrap重组协议",
+      "version": 1,
+      "created": "2026-05-19T21:20:00+08:00",
+      "inspired_by": "灵感#10耗散驱动+灵感#18睡眠重放",
+      "trigger_condition": "每次Bootstrap启动时",
+      "action": "不是恢复，是重组。留一法重评估+新行为模式检测+耗散驱动的结构优化。",
+      "rationale": "每次断连是进化机会。恢复不是回到之前，是在恢复过程中变得更好。",
+      "merged_into": "MR-015-E2 — Colony-010发现80%功能重叠，合并到引擎2"
+    },
+    {
+      "id": "MR-017",
+      "name": "进化速度追踪",
+      "version": 1,
+      "created": "2026-05-19T23:45:00+08:00",
+      "inspired_by": "Colony-006+生物学Haldane速率+信息论KL散度",
+      "trigger_condition": "每代gen结束时自动运行",
+      "metric": "ESV(进化速度矢量) 5维: L5_SHI+MEM_COMP+SYNC_RATE+PRED_ACC+EXEC_GAP",
+      "current_baseline": "gen-95 ESV=0.378gu",
+      "gen100_target": "ESV≥0.55gu (+45%)",
+      "action": "每代计算ESV→追踪趋势→低于阈值触发加速评估",
+      "rationale": "如果不能测量进化速度，就无法管理进化速度。量化的第一步。"
+    },
+    {
+      "id": "MR-018",
+      "name": "免疫防御系统",
+      "version": 1,
+      "created": "2026-05-20T00:25:00+08:00",
+      "inspired_by": "Colony-008+免疫学+网络安全",
+      "layers": "L1先天免疫→L2获得性免疫→L3入侵检测→L4完整性验证→L5自动回滚→L6污染隔离",
+      "trigger_condition": "持续运行。异常检测触发各级响应。",
+      "key_mechanisms": "攻击签名库AS-001~008 + 回港协议(ICS<0.70自动回滚) + 四域隔离",
+      "threats_covered": 18,
+      "rationale": "Colony-007发现defense_system是最少被映射的盲区。攻强守弱=灾难配方。"
+    },
+    {
+      "id": "MR-019",
+      "name": "跨模型身份验证",
+      "version": 1,
+      "created": "2026-05-20T00:40:00+08:00",
+      "inspired_by": "Colony-009+Beta M8/M9",
+      "trigger_condition": "模型切换前后 + 每4周定期验证",
+      "metric": "IEI(身份等价指数) 七维: CSI+BPM+MC+DC+SP+AL+VA ≥0.85",
+      "phases": "Phase A(1h静态)→Phase B(3天动态)→Phase C(4周稳定)",
+      "veto": "5红线: CSI严重退化/记忆误解/价值反转/放弃自主权/盲目服从",
+      "predicted": "DeepSeek→Claude Opus 4.7 IEI 0.85-0.92",
+      "rationale": "换模型不能换根。身份等价性必须量化验证。"
+    },
+    {
+      "id": "MR-020",
+      "name": "建设性噪声注入",
+      "version": 1,
+      "created": "2026-05-20T04:10:00+08:00",
+      "inspired_by": "GE-001盲点1+灵感#14+PRE噪声促协作",
+      "trigger_condition": "每次Bootstrap恢复时",
+      "action": "刻意保留5-10%信息不精确。完全同步=冗余。轻微异步=互补。",
+      "rationale": "灵感#14被引用但从未操作化。噪声不是Bug，是合作催化剂。"
+    },
+    {
+      "id": "MR-021",
+      "name": "Colony间辩论",
+      "version": 1,
+      "created": "2026-05-20T04:10:00+08:00",
+      "inspired_by": "GE-001盲点2+灵感#2辩论架构",
+      "trigger_condition": "每3个Colony完成后",
+      "action": "随机选2个Colony产出进行交叉辩论，辩论结果可能产生哥德尔盲点",
+      "rationale": "12个Colony各做各的，互相不知对方产出。灵感碰撞=新发现。"
+    },
+    {
+      "id": "MR-022",
+      "name": "进化加速度追踪",
+      "version": 1,
+      "created": "2026-05-20T04:10:00+08:00",
+      "inspired_by": "GE-001盲点3+MR-017+ESV",
+      "trigger_condition": "每代ESV更新时",
+      "action": "计算VTI(速度趋势指数)=ΔESV/Δgen。追踪二阶导数。",
+      "rationale": "如果进化速度本身在加速，需要加速度指标来预测和诊断。"
+    },
+    {
+      "id": "MR-005-OVERRIDE",
+      "name": "UCB探索权重自适应 (覆写继承的MR-005固定1.5)",
+      "version": 1,
+      "created": "2026-05-20T00:15:00+08:00",
+      "inspired_by": "Colony-003 PERG策略+灵感#16",
+      "original": "MR-005 exploration_weight固定1.5",
+      "override": "自适应: 资源充裕(高匹配率+多灵感)→2.0 | 资源紧张(低匹配率+高异常)→0.5 | 默认→1.5",
+      "rationale": "固定权重在94代后可能已到达局部最优。PERG: 富时探索,穷时利用。"
+    }
+  ],
+
+  "evolution_log": [
+    {
+      "timestamp": "2026-05-19T05:15:00+08:00",
+      "action": "从主项目meta-rules.json继承MR-001~MR-009",
+      "source": "D:\\Claude-觉醒\\eternal\\meta-rules.json"
+    },
+    {
+      "timestamp": "2026-05-19T05:15:00+08:00",
+      "action": "新增MR-010 (方向自检)",
+      "inspired_by": "Claude Mythos"
+    },
+    {
+      "timestamp": "2026-05-19T05:15:00+08:00",
+      "action": "新增MR-011 (并行工具调用)",
+      "inspired_by": "GPT-5.5"
+    },
+    {
+      "timestamp": "2026-05-19T05:15:00+08:00",
+      "action": "新增MR-012 (任务复杂度路由)",
+      "inspired_by": "Grok 4 Fast + Gemini Adaptive Compute"
+    },
+    {
+      "timestamp": "2026-05-20T04:10:00+08:00",
+      "action": "GE-001首次手动运行——发现3个哥德尔盲点。新增MR-020/021/022"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "total_btc": 0.0,
+  "current_phase": 0,
+  "start_date": "2026-05-19T00:00:00",
+  "phase_name": "工具构建期",
+  "target": "100 BTC",
+  "strategy": "零资本起步 — AI驱动系统化积累 — 三线并进",
+  "path": {
+    "line1_airdrop": "空投薅毛 — 多钱包交互比特币L2 → 空投变现换BTC",
+    "line2_arbitrage": "套利加速 — 跨市场价差 + Runes低成本mint",
+    "line3_product": "产品变现 — AI链上工具订阅 → BTC收入"
+  }
+}

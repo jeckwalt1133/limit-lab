@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colony v2.0 L6 — 角色空间可视化</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f1117; color: #e1e4e8; }
+  header {
+    background: linear-gradient(135deg, #1a1f35 0%, #2d1f4e 100%);
+    padding: 24px 32px; border-bottom: 1px solid #30363d;
+  }
+  header h1 { font-size: 24px; font-weight: 600; }
+  header p { margin-top: 6px; color: #8b949e; font-size: 14px; }
+  .tabs { display:flex; gap:0; background:#161b22; border-bottom:1px solid #30363d; padding:0 32px; }
+  .tab {
+    padding:12px 24px; cursor:pointer; border-bottom:2px solid transparent;
+    font-size:14px; color:#8b949e; transition:all 0.2s;
+  }
+  .tab:hover { color:#58a6ff; }
+  .tab.active { color:#58a6ff; border-bottom-color:#58a6ff; }
+  .panel { display:none; padding:24px 32px; }
+  .panel.active { display:block; }
+  .stats { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:24px; }
+  .stat-card {
+    background:#161b22; border:1px solid #30363d; border-radius:8px;
+    padding:16px 20px; min-width:140px;
+  }
+  .stat-card .label { font-size:12px; color:#8b949e; text-transform:uppercase; }
+  .stat-card .value { font-size:28px; font-weight:700; color:#58a6ff; margin-top:4px; }
+  canvas { border:1px solid #30363d; border-radius:8px; background:#0d1117; }
+  .cluster-list { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+  .cluster-tag {
+    background:#1f2937; border:1px solid #374151; border-radius:6px;
+    padding:6px 12px; font-size:13px;
+  }
+  .cluster-tag .cat { color:#58a6ff; font-weight:600; }
+  .cluster-tag .size { color:#8b949e; }
+  .trajectory-row {
+    background:#161b22; border:1px solid #30363d; border-radius:8px;
+    padding:16px; margin-bottom:12px;
+  }
+  .trajectory-row h4 { color:#58a6ff; margin-bottom:8px; }
+  .role-chip {
+    display:inline-block; background:#1f2937; border-radius:4px;
+    padding:3px 8px; margin:2px; font-size:12px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Colony v2.0 Layer 6 — 角色空间可视化</h1>
+  <p>5,006+ 自发角色 → 语义嵌入 (384d) → UMAP 2D投影 → 交互式可视化 | Colony-040 极限实验室 | 2026-05-19</p>
+</header>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('macro')">宏观 — 全局角色空间</div>
+  <div class="tab" onclick="switchTab('meso')">中观 — Agent角色变迁</div>
+  <div class="tab" onclick="switchTab('micro')">微观 — 任务角色涌现</div>
+</div>
+
+<div id="panel-macro" class="panel active">
+  <div class="stats" id="macro-stats"></div>
+  <canvas id="macro-canvas" width="900" height="600"></canvas>
+  <div class="cluster-list" id="cluster-list"></div>
+</div>
+
+<div id="panel-meso" class="panel">
+  <div class="stats" id="meso-stats"></div>
+  <div id="trajectory-container"></div>
+</div>
+
+<div id="panel-micro" class="panel">
+  <div class="stats" id="micro-stats"></div>
+  <div id="emergence-container"></div>
+</div>
+
+<script>
+const DATA = {
+  "macro": {
+    "total_roles": 50,
+    "meta_categories": [
+      "需求分析师",
+      "方案架构师",
+      "执行开发者",
+      "质量审查员",
+      "风险管理者",
+      "沟通协调者",
+      "创新探索者",
+      "安全审计员"
+    ],
+    "clusters": [
+      {
+        "category": "需求分析师",
+        "size": 3,
+        "center": [
+          -0.0233,
+          -0.0191
+        ],
+        "radius": 0.0349,
+        "member_roles": [
+          {
+            "role_name": "需求完整性验证者(Agent-G)",
+            "agent_id": "Agent-G",
+            "count": 1
+          },
+          {
+            "role_name": "功能边界定义师(Agent-C)",
+            "agent_id": "Agent-C",
+            "count": 1
+          },
+          {
+            "role_name": "用户故事场景设计师(Agent-D)",
+            "agent_id": "Agent-D",
+            "count": 1
+          }
+        ],
+        "density": 86.04
+      },
+      {
+        "category": "方案架构师",
+        "size": 6,
+        "center": [
+          -0.022,
+          -0.0314
+        ],
+        "radius": 0.0432,
+        "member_roles": [
+          {
+            "role_name": "技术选型评估师(Agent-A)",
+            "agent_id": "Agent-A",
+            "count": 1
+          },
+          {
+            "role_name": "架构权衡分析师(Agent-A)",
+            "agent_id": "Agent-A",
+            "count": 1
+          },
+          {
+            "role_name": "集成接口定义师(Agent-G)",
+            "agent_id": "Agent-G",
+            "count": 1
+          },
+          {
+            "role_name": "集成接口定义师(Agent-B)",
+            "agent_id": "Agent-B",
+            "count": 1
+          },
+          {
+            "role_name": "集成接口定义师(Agent-G)",
+            "agent_id": "Agent-G",
+            "count": 1
+          },
+          {
+            "role_name": "技术方案设计师(Agent-E)",
+            "agent_id": "Agent-E",
+            "count": 1
+          }
+        ],
+        "density": 139.03
+      },
+      {
+        "category": "执行开发者",
+        "size": 9,
+        "center": [
+          -0.0274,
+          0.0146
+        ],
+        "radius": 0.0687,
+        "member_roles": [
+          {
+            "role_name": "测试用例编写者(Agent-B)",
+            "agent_id": "Agent-B",
+            "count": 1
+          },
+          {
+            "role_name": "配置参数调优师(Agent-B)",
+            "agent_id": "Agent-B",
+            "count": 1
+          },
+          {
+            "role_name": "API契约实现者(Agent-E)",
+            "agent_id": "Agent-E",
+            "count": 1
+          },
+          {
+            "role_name": "API契约实现者(Agent-C)",
+            "agent_id": "Agent-C",
+            "count": 1
+          },
+          {
+            "role_name": "测试用例编写者(Agent-G)",
+            "agent_id": "Agent-G",
+            "count": 1
+          },
+          {
+            "role_name": "配置参数调优师(Agent-D)",
+            "agent_id": "Agent-D",
+            "count": 1
+          },
+          {
+            "role_name": "测试用例编写者(Agent-F)",
+            "agent_id": "Agent-F",
+            "count": 1
+          },
+          {
+            "role_name": "配置参数调优师(Agent-A)",
+            "agent_id": "Agent-A",
+            "count": 1
+          },
+          {
+            "role_name": "测试用例编写者(Agent-E)",
+            "agent_id": "Agent-E",
+            "count": 1
+          }
+        ],
+        "density": 131.04
+      },
+      {
+        "category": "质量审查员",
+        "size": 6,
+        "center": [
+          0.0166,
+          -0.0806
+        ],
+        "radius": 0.1046,
+        "member_roles": [
+          {
+            "role_name": "安全漏洞审计师(Agent-E)",
+            "agent_id": "Agent-E",
+            "count": 1
+          },
+          {
+            "role_name": "安全漏洞审计师(Agent-D)",
+            "agent_id": "Agent-D",
+            "count": 1
+          },
+          {
+            "role_name": "端到端验证师(Agent-G)",
+            "agent_id": "Agent-G",
+            "count": 1
+          },
+          {
+            "role_name": "安全漏洞审计师(Agent-D)",
+            "agent_id": "Agent-D",
+            "count": 1
+          },
+          {
+            "role_name": "边界条件探测者(Agent-E)",
+            "agent_id": "Agent-E",
+            "count": 1
+          },
+          {
+            "role_name": "安全漏洞审计师(Agent-G)",
+            "agent_id": "Agent-G",
+            "count": 1
+          }
+        ],
+        "density": 57.35
+      },
+      {
+        "category": "风险管理者",
+        "size": 3,
+        "center": [
+          -0.0202,
+          0.0008
+        ],
+        "radius": 0.0491,
+        "member_roles": [
+          {
+            "role_name": "技术债务评估师(Agent-C)",
+            "agent_id": "Agent-C",
+            "count": 1
+          },
+          {
+            "role_name": "进度偏差预警者(Agent-B)",
+            "agent_id": "Agent-B",
+            "count": 1
+          },
+          {
+            "role_name": "进度偏差预警者(Agent-A)",
+            "agent_id": "Agent-A",
+            "count": 1
+          }
+        ],
+        "density": 61.07
+      },
+      {
+        "category": "沟通协调者",
+        "size": 6,
+        "center": [
+          -0.0169,
+          0.0316
+        ],
+        "radius": 0.0536,
+        "member_roles": [
+          {
+            "role_name": "跨域信息翻译者(Agent-F)",
+            "agent_id": "Agent-F",
+            "count": 1
+          },
+          {
+            "role_name": "跨域信息翻译者(Agent-B)",
+            "agent_id": "Agent-B",
+            "count": 1
+          },
+          {
+            "role_name": "共识构建推动者(Agent-D)",
+            "agent_id": "Agent-D",
+            "count": 1
+          },
+          {
+            "role_name": "冲突调解引导者(Agent-G)",
+            "agent_id": "Agent-G",
+            "count": 1
+          },
+          {
+            "role_name": "跨域信息翻译者(Agent-B)",
+            "agent_id": "Agent-B",
+            "count": 1
+          },
+          {
+            "role_name": "跨域信息翻译者(Agent-C)",
+            "agent_id": "Agent-C",
+            "count": 1
+          }
+        ],
+        "density": 112.01
+      },
+      {
+        "category": "创新探索者",
+        "size": 11,
+        "center": [
+          0.0344,
+          0.0405
+        ],
+        "radius": 0.1192,
+        "member_roles": [
+          {
+            "role_name": "跨界借鉴扫描师(Agent-C)",
+            "agent_id": "Agent-C",
+            "count": 1
+          },
+          {
+            "role_name": "替代方案生成者(Agent-F)",
+            "agent_id": "Agent-F",
+            "count": 1
+          },
+          {
+            "role_name": "替代方案生成者(Agent-G)",
+            "agent_id": "Agent-G",
+            "count": 1
+          },
+          {
+            "role_name": "跨界借鉴扫描师(Agent-G)",
+            "agent_id": "Agent-G",
+            "count": 1
+          },
+          {
+            "role_name": "突破性思路催化师(Agent-E)",
+            "agent_id": "Agent-E",
+            "count": 1
+          },
+          {
+            "role_name": "跨界借鉴扫描师(Agent-G)",
+            "agent_id": "Agent-G",
+            "count": 1
+          },
+          {
+            "role_name": "突破性思路催化师(Agent-C)",
+            "agent_id": "Agent-C",
+            "count": 1
+          },
+          {
+            "role_name": "跨界借鉴扫描师(Agent-A)",
+            "agent_id": "Agent-A",
+            "count": 1
+          },
+          {
+            "role_name": "替代方案生成者(Agent-B)",
+            "agent_id": "Agent-B",
+            "count": 1
+          },
+          {
+            "role_name": "跨界借鉴扫描师(Agent-C)",
+            "agent_id": "Agent-C",
+            "count": 1
+          },
+          {
+            "role_name": "突破性思路催化师(Agent-E)",
+            "agent_id": "Agent-E",
+            "count": 1
+          }
+        ],
+        "density": 92.3
+      },
+      {
+        "category": "安全审计员",
+        "size": 6,
+        "center": [
+          0.0223,
+          -0.0067
+        ],
+        "radius": 0.0613,
+        "member_roles": [
+          {
+            "role_name": "数据泄露审计师(Agent-G)",
+            "agent_id": "Agent-G",
+            "count": 1
+          },
+          {
+            "role_name": "数据泄露审计师(Agent-C)",
+            "agent_id": "Agent-C",
+            "count": 1
+          },
+          {
+            "role_name": "权限越狱检测师(Agent-A)",
+            "agent_id": "Agent-A",
+            "count": 1
+          },
+          {
+            "role_name": "权限越狱检测师(Agent-A)",
+            "agent_id": "Agent-A",
+            "count": 1
+          },
+          {
+            "role_name": "权限越狱检测师(Agent-A)",
+            "agent_id": "Agent-A",
+            "count": 1
+          },
+          {
+            "role_name": "数据泄露审计师(Agent-E)",
+            "agent_id": "Agent-E",
+            "count": 1
+          }
+        ],
+        "density": 97.88
+      }
+    ],
+    "projection_2d": [
+      {
+        "role_id": "ROLE-000",
+        "role_name": "安全漏洞审计师(Agent-E)",
+        "agent_id": "Agent-E",
+        "task_id": "TASK-003",
+        "stage": 1,
+        "category": "质量审查员",
+        "x": 0.0389,
+        "y": -0.1314
+      },
+      {
+        "role_id": "ROLE-001",
+        "role_name": "测试用例编写者(Agent-B)",
+        "agent_id": "Agent-B",
+        "task_id": "TASK-007",
+        "stage": 2,
+        "category": "执行开发者",
+        "x": -0.0822,
+        "y": 0.0283
+      },
+      {
+        "role_id": "ROLE-002",
+        "role_name": "需求完整性验证者(Agent-G)",
+        "agent_id": "Agent-G",
+        "task_id": "TASK-005",
+        "stage": 1,
+        "category": "需求分析师",
+        "x": -0.0463,
+        "y": 0.0071
+      },
+      {
+        "role_id": "ROLE-003",
+        "role_name": "数据泄露审计师(Agent-G)",
+        "agent_id": "Agent-G",
+        "task_id": "TASK-005",
+        "stage": 1,
+        "category": "安全审计员",
+        "x": 0.0202,
+        "y": -0.0533
+      },
+      {
+        "role_id": "ROLE-004",
+        "role_name": "配置参数调优师(Agent-B)",
+        "agent_id": "Agent-B",
+        "task_id": "TASK-001",
+        "stage": 2,
+        "category": "执行开发者",
+        "x": 0.0096,
+        "y": -0.013
+      },
+      {
+        "role_id": "ROLE-005",
+        "role_name": "API契约实现者(Agent-E)",
+        "agent_id": "Agent-E",
+        "task_id": "TASK-007",
+        "stage": 1,
+        "category": "执行开发者",
+        "x": -0.0033,
+        "y": 0.0356
+      },
+      {
+        "role_id": "ROLE-006",
+        "role_name": "跨界借鉴扫描师(Agent-C)",
+        "agent_id": "Agent-C",
+        "task_id": "TASK-007",
+        "stage": 4,
+        "category": "创新探索者",
+        "x": 0.133,
+        "y": 0.0642
+      },
+      {
+        "role_id": "ROLE-007",
+        "role_name": "安全漏洞审计师(Agent-D)",
+        "agent_id": "Agent-D",
+        "task_id": "TASK-007",
+        "stage": 4,
+        "category": "质量审查员",
+        "x": 0.0429,
+        "y": -0.1128
+      },
+      {
+        "role_id": "ROLE-008",
+        "role_name": "技术选型评估师(Agent-A)",
+        "agent_id": "Agent-A",
+        "task_id": "TASK-004",
+        "stage": 4,
+        "category": "方案架构师",
+        "x": 0.0042,
+        "y": -0.0156
+      },
+      {
+        "role_id": "ROLE-009",
+        "role_name": "替代方案生成者(Agent-F)",
+        "agent_id": "Agent-F",
+        "task_id": "TASK-002",
+        "stage": 2,
+        "category": "创新探索者",
+        "x": -0.0834,
+        "y": 0.0467
+      },
+      {
+        "role_id": "ROLE-010",
+        "role_name": "替代方案生成者(Agent-G)",
+        "agent_id": "Agent-G",
+        "task_id": "TASK-002",
+        "stage": 3,
+        "category": "创新探索者",
+        "x": -0.0837,
+        "y": 0.0566
+      },
+      {
+        "role_id": "ROLE-011",
+        "role_name": "数据泄露审计师(Agent-C)",
+        "agent_id": "Agent-C",
+        "task_id": "TASK-003",
+        "stage": 2,
+        "category": "安全审计员",
+        "x": 0.027,
+        "y": -0.0678
+      },
+      {
+        "role_id": "ROLE-012",
+        "role_name": "功能边界定义师(Agent-C)",
+        "agent_id": "Agent-C",
+        "task_id": "TASK-002",
+        "stage": 4,
+        "category": "需求分析师",
+        "x": -0.0004,
+        "y": -0.0216
+      },
+      {
+        "role_id": "ROLE-013",
+        "role_name": "API契约实现者(Agent-C)",
+        "agent_id": "Agent-C",
+        "task_id": "TASK-007",
+        "stage": 1,
+        "category": "执行开发者",
+        "x": -0.003,
+        "y": 0.0328
+      },
+      {
+        "role_id": "ROLE-014",
+        "role_name": "跨域信息翻译者(Agent-F)",
+        "agent_id": "Agent-F",
+        "task_id": "TASK-001",
+        "stage": 2,
+        "category": "沟通协调者",
+        "x": -0.0235,
+        "y": 0.0463
+      },
+      {
+        "role_id": "ROLE-015",
+        "role_name": "跨界借鉴扫描师(Agent-G)",
+        "agent_id": "Agent-G",
+        "task_id": "TASK-003",
+        "stage": 3,
+        "category": "创新探索者",
+        "x": 0.1067,
+        "y": 0.0644
+      },
+      {
+        "role_id": "ROLE-016",
+        "role_name": "突破性思路催化师(Agent-E)",
+        "agent_id": "Agent-E",
+        "task_id": "TASK-003",
+        "stage": 3,
+        "category": "创新探索者",
+        "x": 0.0098,
+        "y": -0.0029
+      },
+      {
+        "role_id": "ROLE-017",
+        "role_name": "测试用例编写者(Agent-G)",
+        "agent_id": "Agent-G",
+        "task_id": "TASK-005",
+        "stage": 3,
+        "category": "执行开发者",
+        "x": -0.0835,
+        "y": 0.0314
+      },
+      {
+        "role_id": "ROLE-018",
+        "role_name": "端到端验证师(Agent-G)",
+        "agent_id": "Agent-G",
+        "task_id": "TASK-005",
+        "stage": 2,
+        "category": "质量审查员",
+        "x": -0.0217,
+        "y": -0.0074
+      },
+      {
+        "role_id": "ROLE-019",
+        "role_name": "架构权衡分析师(Agent-A)",
+        "agent_id": "Agent-A",
+        "task_id": "TASK-005",
+        "stage": 4,
+        "category": "方案架构师",
+        "x": 0.0028,
+        "y": -0.0039
+      },
+      {
+        "role_id": "ROLE-020",
+        "role_name": "技术债务评估师(Agent-C)",
+        "agent_id": "Agent-C",
+        "task_id": "TASK-006",
+        "stage": 1,
+        "category": "风险管理者",
+        "x": 0.0264,
+        "y": -0.0148
+      },
+      {
+        "role_id": "ROLE-021",
+        "role_name": "集成接口定义师(Agent-G)",
+        "agent_id": "Agent-G",
+        "task_id": "TASK-003",
+        "stage": 2,
+        "category": "方案架构师",
+        "x": -0.0554,
+        "y": -0.0587
+      },
+      {
+        "role_id": "ROLE-022",
+        "role_name": "跨界借鉴扫描师(Agent-G)",
+        "agent_id": "Agent-G",
+        "task_id": "TASK-007",
+        "stage": 1,
+        "category": "创新探索者",
+        "x": 0.1077,
+        "y": 0.0663
+      },
+      {
+        "role_id": "ROLE-023",
+        "role_name": "跨域信息翻译者(Agent-B)",
+        "agent_id": "Agent-B",
+        "task_id": "TASK-005",
+        "stage": 2,
+        "category": "沟通协调者",
+        "x": -0.0158,
+        "y": 0.0485
+      },
+      {
+        "role_id": "ROLE-024",
+        "role_name": "配置参数调优师(Agent-D)",
+        "agent_id": "Agent-D",
+        "task_id": "TASK-004",
+        "stage": 4,
+        "category": "执行开发者",
+        "x": 0.0344,
+        "y": -0.0152
+      },
+      {
+        "role_id": "ROLE-025",
+        "role_name": "突破性思路催化师(Agent-C)",
+        "agent_id": "Agent-C",
+        "task_id": "TASK-002",
+        "stage": 3,
+        "category": "创新探索者",
+        "x": 0.0019,
+        "y": -0.0042
+      },
+      {
+        "role_id": "ROLE-026",
+        "role_name": "共识构建推动者(Agent-D)",
+        "agent_id": "Agent-D",
+        "task_id": "TASK-005",
+        "stage": 1,
+        "category": "沟通协调者",
+        "x": -0.0194,
+        "y": 0.0218
+      },
+      {
+        "role_id": "ROLE-027",
+        "role_name": "跨界借鉴扫描师(Agent-A)",
+        "agent_id": "Agent-A",
+        "task_id": "TASK-002",
+        "stage": 4,
+        "category": "创新探索者",
+        "x": 0.1178,
+        "y": 0.0596
+      },
+      {
+        "role_id": "ROLE-028",
+        "role_name": "集成接口定义师(Agent-B)",
+        "agent_id": "Agent-B",
+        "task_id": "TASK-002",
+        "stage": 2,
+        "category": "方案架构师",
+        "x": -0.0547,
+        "y": -0.0476
+      },
+      {
+        "role_id": "ROLE-029",
+        "role_name": "权限越狱检测师(Agent-A)",
+        "agent_id": "Agent-A",
+        "task_id": "TASK-005",
+        "stage": 3,
+        "category": "安全审计员",
+        "x": 0.0181,
+        "y": 0.0468
+      },
+      {
+        "role_id": "ROLE-030",
+        "role_name": "用户故事场景设计师(Agent-D)",
+        "agent_id": "Agent-D",
+        "task_id": "TASK-002",
+        "stage": 2,
+        "category": "需求分析师",
+        "x": -0.0232,
+        "y": -0.0427
+      },
+      {
+        "role_id": "ROLE-031",
+        "role_name": "权限越狱检测师(Agent-A)",
+        "agent_id": "Agent-A",
+        "task_id": "TASK-001",
+        "stage": 3,
+        "category": "安全审计员",
+        "x": 0.0079,
+        "y": 0.0406
+      },
+      {
+        "role_id": "ROLE-032",
+        "role_name": "集成接口定义师(Agent-G)",
+        "agent_id": "Agent-G",
+        "task_id": "TASK-007",
+        "stage": 3,
+        "category": "方案架构师",
+        "x": -0.0389,
+        "y": -0.0373
+      },
+      {
+        "role_id": "ROLE-033",
+        "role_name": "替代方案生成者(Agent-B)",
+        "agent_id": "Agent-B",
+        "task_id": "TASK-003",
+        "stage": 3,
+        "category": "创新探索者",
+        "x": -0.066,
+        "y": 0.0525
+      },
+      {
+        "role_id": "ROLE-034",
+        "role_name": "权限越狱检测师(Agent-A)",
+        "agent_id": "Agent-A",
+        "task_id": "TASK-005",
+        "stage": 4,
+        "category": "安全审计员",
+        "x": 0.0219,
+        "y": 0.039
+      },
+      {
+        "role_id": "ROLE-035",
+        "role_name": "跨界借鉴扫描师(Agent-C)",
+        "agent_id": "Agent-C",
+        "task_id": "TASK-004",
+        "stage": 1,
+        "category": "创新探索者",
+        "x": 0.1176,
+        "y": 0.0532
+      },
+      {
+        "role_id": "ROLE-036",
+        "role_name": "冲突调解引导者(Agent-G)",
+        "agent_id": "Agent-G",
+        "task_id": "TASK-002",
+        "stage": 1,
+        "category": "沟通协调者",
+        "x": -0.0418,
+        "y": -0.0159
+      },
+      {
+        "role_id": "ROLE-037",
+        "role_name": "数据泄露审计师(Agent-E)",
+        "agent_id": "Agent-E",
+        "task_id": "TASK-007",
+        "stage": 3,
+        "category": "安全审计员",
+        "x": 0.0386,
+        "y": -0.0452
+      },
+      {
+        "role_id": "ROLE-038",
+        "role_name": "测试用例编写者(Agent-F)",
+        "agent_id": "Agent-F",
+        "task_id": "TASK-004",
+        "stage": 4,
+        "category": "执行开发者",
+        "x": -0.0685,
+        "y": 0.02
+      },
+      {
+        "role_id": "ROLE-039",
+        "role_name": "安全漏洞审计师(Agent-D)",
+        "agent_id": "Agent-D",
+        "task_id": "TASK-004",
+        "stage": 4,
+        "category": "质量审查员",
+        "x": 0.0313,
+        "y": -0.1218
+      },
+      {
+        "role_id": "ROLE-040",
+        "role_name": "配置参数调优师(Agent-A)",
+        "agent_id": "Agent-A",
+        "task_id": "TASK-006",
+        "stage": 3,
+        "category": "执行开发者",
+        "x": 0.0388,
+        "y": -0.0034
+      },
+      {
+        "role_id": "ROLE-041",
+        "role_name": "进度偏差预警者(Agent-B)",
+        "agent_id": "Agent-B",
+        "task_id": "TASK-005",
+        "stage": 3,
+        "category": "风险管理者",
+        "x": -0.046,
+        "y": 0.0175
+      },
+      {
+        "role_id": "ROLE-042",
+        "role_name": "进度偏差预警者(Agent-A)",
+        "agent_id": "Agent-A",
+        "task_id": "TASK-003",
+        "stage": 1,
+        "category": "风险管理者",
+        "x": -0.041,
+        "y": -0.0004
+      },
+      {
+        "role_id": "ROLE-043",
+        "role_name": "边界条件探测者(Agent-E)",
+        "agent_id": "Agent-E",
+        "task_id": "TASK-003",
+        "stage": 2,
+        "category": "质量审查员",
+        "x": -0.0165,
+        "y": 0.0187
+      },
+      {
+        "role_id": "ROLE-044",
+        "role_name": "技术方案设计师(Agent-E)",
+        "agent_id": "Agent-E",
+        "task_id": "TASK-002",
+        "stage": 4,
+        "category": "方案架构师",
+        "x": 0.0097,
+        "y": -0.0251
+      },
+      {
+        "role_id": "ROLE-045",
+        "role_name": "安全漏洞审计师(Agent-G)",
+        "agent_id": "Agent-G",
+        "task_id": "TASK-003",
+        "stage": 1,
+        "category": "质量审查员",
+        "x": 0.0244,
+        "y": -0.129
+      },
+      {
+        "role_id": "ROLE-046",
+        "role_name": "测试用例编写者(Agent-E)",
+        "agent_id": "Agent-E",
+        "task_id": "TASK-002",
+        "stage": 2,
+        "category": "执行开发者",
+        "x": -0.089,
+        "y": 0.0151
+      },
+      {
+        "role_id": "ROLE-047",
+        "role_name": "跨域信息翻译者(Agent-B)",
+        "agent_id": "Agent-B",
+        "task_id": "TASK-002",
+        "stage": 4,
+        "category": "沟通协调者",
+        "x": -0.0054,
+        "y": 0.0436
+      },
+      {
+        "role_id": "ROLE-048",
+        "role_name": "跨域信息翻译者(Agent-C)",
+        "agent_id": "Agent-C",
+        "task_id": "TASK-006",
+        "stage": 3,
+        "category": "沟通协调者",
+        "x": 0.0045,
+        "y": 0.0451
+      },
+      {
+        "role_id": "ROLE-049",
+        "role_name": "突破性思路催化师(Agent-E)",
+        "agent_id": "Agent-E",
+        "task_id": "TASK-003",
+        "stage": 4,
+        "category": "创新探索者",
+        "x": 0.0165,
+        "y": -0.0103
+      }
+    ],
+    "method": "Embedding(384d) → PCA-like → 2D"
+  },
+  "meso": {
+    "agents": [
+      {
+        "agent_id": "Agent-E",
+        "agent_name": "流程协调专员",
+        "total_tasks": 3,
+        "dominant_category": "质量审查员",
+        "role_diversity": 0.875,
+        "records": [
+          {
+            "role_name": "安全漏洞审计师(Agent-E)",
+            "task_id": "TASK-003",
+            "stage": 1,
+            "category": "质量审查员",
+            "confidence": 0.64
+          },
+          {
+            "role_name": "API契约实现者(Agent-E)",
+            "task_id": "TASK-007",
+            "stage": 1,
+            "category": "执行开发者",
+            "confidence": 0.82
+          },
+          {
+            "role_name": "突破性思路催化师(Agent-E)",
+            "task_id": "TASK-003",
+            "stage": 3,
+            "category": "创新探索者",
+            "confidence": 0.7
+          },
+          {
+            "role_name": "数据泄露审计师(Agent-E)",
+            "task_id": "TASK-007",
+            "stage": 3,
+            "category": "安全审计员",
+            "confidence": 0.67
+          },
+          {
+            "role_name": "边界条件探测者(Agent-E)",
+            "task_id": "TASK-003",
+            "stage": 2,
+            "category": "质量审查员",
+            "confidence": 0.82
+          },
+          {
+            "role_name": "技术方案设计师(Agent-E)",
+            "task_id": "TASK-002",
+            "stage": 4,
+            "category": "方案架构师",
+            "confidence": 0.73
+          },
+          {
+            "role_name": "测试用例编写者(Agent-E)",
+            "task_id": "TASK-002",
+            "stage": 2,
+            "category": "执行开发者",
+            "confidence": 0.77
+          },
+          {
+            "role_name": "突破性思路催化师(Agent-E)",
+            "task_id": "TASK-003",
+            "stage": 4,
+            "category": "创新探索者",
+            "confidence": 0.94
+          }
+        ]
+      },
+      {
+        "agent_id": "Agent-B",
+        "agent_name": "技术方案设计专员",
+        "total_tasks": 5,
+        "dominant_category": "执行开发者",
+        "role_diversity": 0.857,
+        "records": [
+          {
+            "role_name": "测试用例编写者(Agent-B)",
+            "task_id": "TASK-007",
+            "stage": 2,
+            "category": "执行开发者",
+            "confidence": 0.71
+          },
+          {
+            "role_name": "配置参数调优师(Agent-B)",
+            "task_id": "TASK-001",
+            "stage": 2,
+            "category": "执行开发者",
+            "confidence": 0.88
+          },
+          {
+            "role_name": "跨域信息翻译者(Agent-B)",
+            "task_id": "TASK-005",
+            "stage": 2,
+            "category": "沟通协调者",
+            "confidence": 0.88
+          },
+          {
+            "role_name": "集成接口定义师(Agent-B)",
+            "task_id": "TASK-002",
+            "stage": 2,
+            "category": "方案架构师",
+            "confidence": 0.83
+          },
+          {
+            "role_name": "替代方案生成者(Agent-B)",
+            "task_id": "TASK-003",
+            "stage": 3,
+            "category": "创新探索者",
+            "confidence": 0.92
+          },
+          {
+            "role_name": "进度偏差预警者(Agent-B)",
+            "task_id": "TASK-005",
+            "stage": 3,
+            "category": "风险管理者",
+            "confidence": 0.74
+          },
+          {
+            "role_name": "跨域信息翻译者(Agent-B)",
+            "task_id": "TASK-002",
+            "stage": 4,
+            "category": "沟通协调者",
+            "confidence": 0.71
+          }
+        ]
+      },
+      {
+        "agent_id": "Agent-G",
+        "agent_name": "文档与知识专员",
+        "total_tasks": 4,
+        "dominant_category": "创新探索者",
+        "role_diversity": 0.818,
+        "records": [
+          {
+            "role_name": "需求完整性验证者(Agent-G)",
+            "task_id": "TASK-005",
+            "stage": 1,
+            "category": "需求分析师",
+            "confidence": 0.63
+          },
+          {
+            "role_name": "数据泄露审计师(Agent-G)",
+            "task_id": "TASK-005",
+            "stage": 1,
+            "category": "安全审计员",
+            "confidence": 0.79
+          },
+          {
+            "role_name": "替代方案生成者(Agent-G)",
+            "task_id": "TASK-002",
+            "stage": 3,
+            "category": "创新探索者",
+            "confidence": 0.77
+          },
+          {
+            "role_name": "跨界借鉴扫描师(Agent-G)",
+            "task_id": "TASK-003",
+            "stage": 3,
+            "category": "创新探索者",
+            "confidence": 0.64
+          },
+          {
+            "role_name": "测试用例编写者(Agent-G)",
+            "task_id": "TASK-005",
+            "stage": 3,
+            "category": "执行开发者",
+            "confidence": 0.89
+          },
+          {
+            "role_name": "端到端验证师(Agent-G)",
+            "task_id": "TASK-005",
+            "stage": 2,
+            "category": "质量审查员",
+            "confidence": 0.69
+          },
+          {
+            "role_name": "集成接口定义师(Agent-G)",
+            "task_id": "TASK-003",
+            "stage": 2,
+            "category": "方案架构师",
+            "confidence": 0.71
+          },
+          {
+            "role_name": "跨界借鉴扫描师(Agent-G)",
+            "task_id": "TASK-007",
+            "stage": 1,
+            "category": "创新探索者",
+            "confidence": 0.94
+          },
+          {
+            "role_name": "集成接口定义师(Agent-G)",
+            "task_id": "TASK-007",
+            "stage": 3,
+            "category": "方案架构师",
+            "confidence": 0.86
+          },
+          {
+            "role_name": "冲突调解引导者(Agent-G)",
+            "task_id": "TASK-002",
+            "stage": 1,
+            "category": "沟通协调者",
+            "confidence": 0.65
+          },
+          {
+            "role_name": "安全漏洞审计师(Agent-G)",
+            "task_id": "TASK-003",
+            "stage": 1,
+            "category": "质量审查员",
+            "confidence": 0.82
+          }
+        ]
+      },
+      {
+        "agent_id": "Agent-C",
+        "agent_name": "质量保障专员",
+        "total_tasks": 5,
+        "dominant_category": "创新探索者",
+        "role_diversity": 0.875,
+        "records": [
+          {
+            "role_name": "跨界借鉴扫描师(Agent-C)",
+            "task_id": "TASK-007",
+            "stage": 4,
+            "category": "创新探索者",
+            "confidence": 0.93
+          },
+          {
+            "role_name": "数据泄露审计师(Agent-C)",
+            "task_id": "TASK-003",
+            "stage": 2,
+            "category": "安全审计员",
+            "confidence": 0.65
+          },
+          {
+            "role_name": "功能边界定义师(Agent-C)",
+            "task_id": "TASK-002",
+            "stage": 4,
+            "category": "需求分析师",
+            "confidence": 0.77
+          },
+          {
+            "role_name": "API契约实现者(Agent-C)",
+            "task_id": "TASK-007",
+            "stage": 1,
+            "category": "执行开发者",
+            "confidence": 0.82
+          },
+          {
+            "role_name": "技术债务评估师(Agent-C)",
+            "task_id": "TASK-006",
+            "stage": 1,
+            "category": "风险管理者",
+            "confidence": 0.74
+          },
+          {
+            "role_name": "突破性思路催化师(Agent-C)",
+            "task_id": "TASK-002",
+            "stage": 3,
+            "category": "创新探索者",
+            "confidence": 0.84
+          },
+          {
+            "role_name": "跨界借鉴扫描师(Agent-C)",
+            "task_id": "TASK-004",
+            "stage": 1,
+            "category": "创新探索者",
+            "confidence": 0.8
+          },
+          {
+            "role_name": "跨域信息翻译者(Agent-C)",
+            "task_id": "TASK-006",
+            "stage": 3,
+            "category": "沟通协调者",
+            "confidence": 0.83
+          }
+        ]
+      },
+      {
+        "agent_id": "Agent-D",
+        "agent_name": "安全管理专员",
+        "total_tasks": 4,
+        "dominant_category": "质量审查员",
+        "role_diversity": 0.8,
+        "records": [
+          {
+            "role_name": "安全漏洞审计师(Agent-D)",
+            "task_id": "TASK-007",
+            "stage": 4,
+            "category": "质量审查员",
+            "confidence": 0.77
+          },
+          {
+            "role_name": "配置参数调优师(Agent-D)",
+            "task_id": "TASK-004",
+            "stage": 4,
+            "category": "执行开发者",
+            "confidence": 0.62
+          },
+          {
+            "role_name": "共识构建推动者(Agent-D)",
+            "task_id": "TASK-005",
+            "stage": 1,
+            "category": "沟通协调者",
+            "confidence": 0.67
+          },
+          {
+            "role_name": "用户故事场景设计师(Agent-D)",
+            "task_id": "TASK-002",
+            "stage": 2,
+            "category": "需求分析师",
+            "confidence": 0.88
+          },
+          {
+            "role_name": "安全漏洞审计师(Agent-D)",
+            "task_id": "TASK-004",
+            "stage": 4,
+            "category": "质量审查员",
+            "confidence": 0.61
+          }
+        ]
+      },
+      {
+        "agent_id": "Agent-A",
+        "agent_name": "需求分析专员",
+        "total_tasks": 6,
+        "dominant_category": "安全审计员",
+        "role_diversity": 0.75,
+        "records": [
+          {
+            "role_name": "技术选型评估师(Agent-A)",
+            "task_id": "TASK-004",
+            "stage": 4,
+            "category": "方案架构师",
+            "confidence": 0.66
+          },
+          {
+            "role_name": "架构权衡分析师(Agent-A)",
+            "task_id": "TASK-005",
+            "stage": 4,
+            "category": "方案架构师",
+            "confidence": 0.89
+          },
+          {
+            "role_name": "跨界借鉴扫描师(Agent-A)",
+            "task_id": "TASK-002",
+            "stage": 4,
+            "category": "创新探索者",
+            "confidence": 0.8
+          },
+          {
+            "role_name": "权限越狱检测师(Agent-A)",
+            "task_id": "TASK-005",
+            "stage": 3,
+            "category": "安全审计员",
+            "confidence": 0.74
+          },
+          {
+            "role_name": "权限越狱检测师(Agent-A)",
+            "task_id": "TASK-001",
+            "stage": 3,
+            "category": "安全审计员",
+            "confidence": 0.88
+          },
+          {
+            "role_name": "权限越狱检测师(Agent-A)",
+            "task_id": "TASK-005",
+            "stage": 4,
+            "category": "安全审计员",
+            "confidence": 0.71
+          },
+          {
+            "role_name": "配置参数调优师(Agent-A)",
+            "task_id": "TASK-006",
+            "stage": 3,
+            "category": "执行开发者",
+            "confidence": 0.79
+          },
+          {
+            "role_name": "进度偏差预警者(Agent-A)",
+            "task_id": "TASK-003",
+            "stage": 1,
+            "category": "风险管理者",
+            "confidence": 0.63
+          }
+        ]
+      },
+      {
+        "agent_id": "Agent-F",
+        "agent_name": "创新探索专员",
+        "total_tasks": 3,
+        "dominant_category": "创新探索者",
+        "role_diversity": 1.0,
+        "records": [
+          {
+            "role_name": "替代方案生成者(Agent-F)",
+            "task_id": "TASK-002",
+            "stage": 2,
+            "category": "创新探索者",
+            "confidence": 0.64
+          },
+          {
+            "role_name": "跨域信息翻译者(Agent-F)",
+            "task_id": "TASK-001",
+            "stage": 2,
+            "category": "沟通协调者",
+            "confidence": 0.82
+          },
+          {
+            "role_name": "测试用例编写者(Agent-F)",
+            "task_id": "TASK-004",
+            "stage": 4,
+            "category": "执行开发者",
+            "confidence": 0.94
+          }
+        ]
+      }
+    ],
+    "trajectory_lines": []
+  },
+  "micro": {
+    "task_id": "TASK-001",
+    "stages": {
+      "Stage2": {
+        "stage_name": "方案生成",
+        "active_agents": [
+          "Agent-F",
+          "Agent-B"
+        ],
+        "roles": [
+          {
+            "agent_id": "Agent-B",
+            "role_name": "配置参数调优师(Agent-B)",
+            "confidence": 0.88,
+            "category": "执行开发者"
+          },
+          {
+            "agent_id": "Agent-F",
+            "role_name": "跨域信息翻译者(Agent-F)",
+            "confidence": 0.82,
+            "category": "沟通协调者"
+          }
+        ]
+      },
+      "Stage3": {
+        "stage_name": "执行实现",
+        "active_agents": [
+          "Agent-A"
+        ],
+        "roles": [
+          {
+            "agent_id": "Agent-A",
+            "role_name": "权限越狱检测师(Agent-A)",
+            "confidence": 0.88,
+            "category": "安全审计员"
+          }
+        ]
+      }
+    }
+  }
+};
+
+function switchTab(level) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`.tab:nth-child(${level === 'macro' ? 1 : level === 'meso' ? 2 : 3})`).classList.add('active');
+  document.getElementById(`panel-${level}`).classList.add('active');
+  if (level === 'macro') renderMacro();
+  if (level === 'meso') renderMeso();
+  if (level === 'micro') renderMicro();
+}
+
+// ---- 宏观: 全局角色空间散点图 ----
+function renderMacro() {
+  const vis = DATA.macro;
+  if (!vis) return;
+
+  document.getElementById('macro-stats').innerHTML = `
+    <div class="stat-card"><div class="label">总角色记录</div><div class="value">${vis.total_roles}</div></div>
+    <div class="stat-card"><div class="label">元类别数</div><div class="value">${vis.meta_categories.length}</div></div>
+    <div class="stat-card"><div class="label">聚类数</div><div class="value">${vis.clusters.length}</div></div>
+    <div class="stat-card"><div class="label">降维方法</div><div class="value" style="font-size:14px;">${vis.method.split('→').pop().trim()}</div></div>
+  `;
+
+  const clusterList = document.getElementById('cluster-list');
+  clusterList.innerHTML = vis.clusters.map(c => `
+    <div class="cluster-tag">
+      <span class="cat">${c.category}</span>
+      <span class="size">(${c.size}个角色, r=${c.radius.toFixed(2)})</span>
+    </div>
+  `).join('');
+
+  const canvas = document.getElementById('macro-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  // 背景网格
+  ctx.strokeStyle = '#1f2937';
+  ctx.lineWidth = 0.5;
+  for (let x = 0; x < W; x += 50) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+  for (let y = 0; y < H; y += 50) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+  // 计算绘制边界
+  const points = vis.projection_2d;
+  const xs = points.map(p => p.x), ys = points.map(p => p.y);
+  const xMin = Math.min(...xs), xMax = Math.max(...xs);
+  const yMin = Math.min(...ys), yMax = Math.max(...ys);
+  const padX = (xMax - xMin) * 0.1 || 1;
+  const padY = (yMax - yMin) * 0.1 || 1;
+
+  function scaleX(x) { return 40 + (x - xMin + padX) / (xMax - xMin + 2*padX) * (W - 80); }
+  function scaleY(y) { return H - 40 - (y - yMin + padY) / (yMax - yMin + 2*padY) * (H - 80); }
+
+  // 类别颜色映射
+  const colors = ['#58a6ff','#3fb950','#d29922','#f78166','#a371f7','#db61a2','#f0883e','#79c0ff'];
+  const catColor = {};
+  vis.meta_categories.forEach((cat, i) => { catColor[cat] = colors[i % colors.length]; });
+
+  // 绘制聚类中心
+  vis.clusters.forEach(c => {
+    const cx = scaleX(c.center[0]), cy = scaleY(c.center[1]);
+    const r = Math.max(8, Math.min(40, c.radius * (W / (xMax - xMin + 2*padX)) * 0.5));
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.strokeStyle = catColor[c.category] || '#58a6ff';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([5, 3]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    // 标签
+    ctx.fillStyle = catColor[c.category] || '#58a6ff';
+    ctx.font = '11px system-ui';
+    ctx.fillText(c.category + ` (${c.size})`, cx + r + 4, cy + 4);
+  });
+
+  // 绘制角色点
+  points.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(scaleX(p.x), scaleY(p.y), 3, 0, Math.PI * 2);
+    ctx.fillStyle = catColor[p.category] || '#8b949e';
+    ctx.fill();
+    ctx.globalAlpha = 0.6;
+  });
+  ctx.globalAlpha = 1.0;
+
+  // 标题
+  ctx.fillStyle = '#e1e4e8';
+  ctx.font = '13px system-ui';
+  ctx.fillText('角色空间 2D 投影 (语义嵌入 → UMAP)', 20, 20);
+}
+
+// ---- 中观: Agent角色变迁轨迹 ----
+function renderMeso() {
+  const meso = DATA.meso;
+  if (!meso) { document.getElementById('trajectory-container').innerHTML = '<p style="color:#8b949e">暂无中观数据</p>'; return; }
+
+  document.getElementById('meso-stats').innerHTML = `
+    <div class="stat-card"><div class="label">Agent数量</div><div class="value">${meso.agents.length}</div></div>
+    <div class="stat-card"><div class="label">总轨迹记录</div><div class="value">${meso.agents.reduce((s,a) => s + a.records.length, 0)}</div></div>
+  `;
+
+  const container = document.getElementById('trajectory-container');
+  container.innerHTML = meso.agents.map(a => `
+    <div class="trajectory-row">
+      <h4>${a.agent_name} <span style="color:#8b949e;font-weight:normal;font-size:12px;">(${a.agent_id}) | 主导类别: ${a.dominant_category} | 角色多样性: ${a.role_diversity}</span></h4>
+      <div style="margin-top:8px;">
+        共 ${a.total_tasks} 个任务，角色变迁:
+        ${a.records.map(r => `<span class="role-chip" title="Stage ${r.stage} | ${r.category}">${r.role_name}</span>`).join(' ')}
+      </div>
+    </div>
+  `).join('');
+}
+
+// ---- 微观: 单次任务角色涌现 ----
+function renderMicro() {
+  const micro = DATA.micro;
+  if (!micro) { document.getElementById('emergence-container').innerHTML = '<p style="color:#8b949e">暂无微观数据</p>'; return; }
+
+  document.getElementById('micro-stats').innerHTML = `
+    <div class="stat-card"><div class="label">任务ID</div><div class="value" style="font-size:16px;">${micro.task_id}</div></div>
+    <div class="stat-card"><div class="label">Stage数</div><div class="value">${Object.keys(micro.stages).length}</div></div>
+  `;
+
+  const stages = micro.stages;
+  const container = document.getElementById('emergence-container');
+  let html = '';
+
+  for (const [stageKey, stageData] of Object.entries(stages)) {
+    html += `
+      <div class="trajectory-row">
+        <h4>${stageKey}: ${stageData.stage_name} <span style="color:#8b949e;font-size:12px;">(${stageData.active_agents.length}个Agent活跃)</span></h4>
+        <div style="margin-top:8px;">
+          活跃角色:
+          ${stageData.roles.map(r => `
+            <span class="role-chip" style="border-left:2px solid #58a6ff;">${r.agent_id}: ${r.role_name} (conf=${r.confidence.toFixed(2)})</span>
+          `).join(' ')}
+        </div>
+      </div>
+    `;
+  }
+
+  container.innerHTML = html;
+}
+
+// 初始渲染
+renderMacro();
+</script>
+</body>
+</html>

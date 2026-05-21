@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "leap_id": "GL-001",
+    "gen": 115,
+    "trigger_colony": "Colony-021",
+    "timestamp": "2026-05-19T00:00:00",
+    "calculator_version": "1.0.0",
+    "colony": "Colony-026"
+  },
+  "metrics": {
+    "leap_magnitude": {
+      "M_G": 0.7314,
+      "grade": "大跳",
+      "components": {
+        "S_GS": 0.8333,
+        "D_blind": 0.6,
+        "Q_axiom": 0.7467,
+        "E_dim": 0.9,
+        "E_dim_norm": 0.7163
+      },
+      "weights": {
+        "alpha1": 0.25,
+        "alpha2": 0.2,
+        "alpha3": 0.3,
+        "alpha4": 0.25
+      }
+    },
+    "blindspot_discovery_rate": {
+      "BDR": 0.3028,
+      "grade": "高效",
+      "components": {
+        "C_method": 1.0,
+        "D_candidate": 1.67,
+        "D_candidate_norm": 0.5047,
+        "R_convert": 0.6,
+        "C_theory": 1.0
+      }
+    },
+    "axiom_survival_rate": {
+      "ASR": 1.5,
+      "grade": "超高",
+      "components": {
+        "N_generated": 3,
+        "N_adopted": 3,
+        "N_survived": 3,
+        "N_thriving": 0,
+        "R_adopt": 1.0,
+        "R_sustain": 1.0,
+        "R_thrive": 0.0
+      },
+      "axiom_details": [
+        {
+          "id": "AX-021-001",
+          "adopted_as": "MR-023",
+          "status": "active",
+          "type": "D"
+        },
+        {
+          "id": "AX-021-002",
+          "adopted_as": "MR-024",
+          "status": "active",
+          "type": "A"
+        },
+        {
+          "id": "AX-021-003",
+          "adopted_as": "MR-025",
+          "status": "active",
+          "type": "C"
+        }
+      ]
+    },
+    "dimension_expansion_efficiency": {
+      "DEE": 0.346,
+      "grade": "高效",
+      "components": {
+        "R_exp": 0.9,
+        "R_exp_norm": 0.7163,
+        "P_sat": 0.4,
+        "Saturated_count": 2,
+        "Q_dim": 0.7467,
+        "E_per_ax": 1.5,
+        "E_per_ax_norm": 0.4621,
+        "Total_dim_impact": 4.5,
+        "Expansion_axioms": [
+          "AX-021-001",
+          "AX-021-002",
+          "AX-021-003"
+        ]
+      }
+    }
+  },
+  "composite": {
+    "GLQ": 0.6178,
+    "grade": "大跳",
+    "components": {
+      "M_G": 0.7314,
+      "BDR": 0.3028,
+      "BDR_norm": 0.7655,
+      "ASR": 1.5,
+      "ASR_norm": 0.6351,
+      "DEE": 0.346
+    },
+    "weights": {
+      "w1_M_G": 0.3,
+      "w2_BDR": 0.2,
+      "w3_ASR": 0.25,
+      "w4_DEE": 0.25
+    }
+  }
+}

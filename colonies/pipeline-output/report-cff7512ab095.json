@@ -1,0 +1,223 @@
+{
+  "colony": "Colony-035",
+  "version": "2.0.0",
+  "pipeline_run_id": "cff7512ab095",
+  "metrics": {
+    "pipeline_run_id": "cff7512ab095",
+    "task_id": "TASK-21f51317",
+    "total_duration_ms": 2.7746999985538423,
+    "stage_durations": {
+      "1": 2.2363000316545367,
+      "2": 0.12350000906735659,
+      "3": 0.03559998003765941,
+      "4": 0.05259999306872487
+    },
+    "stage3_retry_count": 0,
+    "total_agent_participations": 8,
+    "total_abstentions": 0,
+    "total_gap_alerts": 0,
+    "final_verdict": "pass",
+    "started_at": "2026-05-21T05:37:46.895272+00:00",
+    "completed_at": "2026-05-21T05:37:46.897774+00:00",
+    "success": true
+  },
+  "stages": [
+    {
+      "stage_id": 1,
+      "stage_label": "情境感知",
+      "metadata": {
+        "stage_id": 1,
+        "started_at": "2026-05-21T05:37:46.895272+00:00",
+        "completed_at": "2026-05-21T05:37:46.897774+00:00",
+        "duration_ms": 2.2363000316545367,
+        "model_version": "",
+        "agent_count": 2,
+        "abstention_count": 0,
+        "token_usage": {},
+        "extra": {}
+      },
+      "agent_outputs": {
+        "Agent-1": {
+          "content_hash": "4c6d3c0a207c832c",
+          "content_length": 217,
+          "role": "信息收集者",
+          "content_preview": "## 情境感知分析\n\n### 任务理解\n对任务「集成测试」的初步理解:\n- 核心目标: 识别并分析...\n- 涉及领域: 通用\n- 复杂度评估: 中等\n\n### Agent [Agent-1] 角色: 信息收集者\n### 前置Stage分析\n(无前置Stage — 这是Pipeline初始Stage)\n\n\n### 风险预警\n- 信息不对称风险: 低\n- 能力匹配度: 0.6873810798303..."
+        },
+        "Agent-2": {
+          "content_hash": "92cfbbe661171395",
+          "content_length": 217,
+          "role": "领域专家",
+          "content_preview": "## 情境感知分析\n\n### 任务理解\n对任务「集成测试」的初步理解:\n- 核心目标: 识别并分析...\n- 涉及领域: 通用\n- 复杂度评估: 中等\n\n### Agent [Agent-2] 角色: 领域专家\n### 前置Stage分析\n(无前置Stage — 这是Pipeline初始Stage)\n\n\n### 风险预警\n- 信息不对称风险: 低\n- 能力匹配度: 0.74895022637481..."
+        }
+      },
+      "role_assignments": [
+        {
+          "agent_id": "Agent-1",
+          "role_name": "信息收集者",
+          "abstain": false,
+          "confidence": 0.687381079830379
+        },
+        {
+          "agent_id": "Agent-2",
+          "role_name": "领域专家",
+          "abstain": false,
+          "confidence": 0.7489502263748189
+        }
+      ],
+      "abstentions": [],
+      "gap_alerts": []
+    },
+    {
+      "stage_id": 2,
+      "stage_label": "方案生成",
+      "metadata": {
+        "stage_id": 2,
+        "started_at": "2026-05-21T05:37:46.897774+00:00",
+        "completed_at": "2026-05-21T05:37:46.897774+00:00",
+        "duration_ms": 0.12350000906735659,
+        "model_version": "",
+        "agent_count": 2,
+        "abstention_count": 0,
+        "token_usage": {},
+        "extra": {
+          "role_transitions": [
+            {
+              "agent_id": "Agent-1",
+              "from_role": "信息收集者",
+              "to_role": "成本估算师"
+            },
+            {
+              "agent_id": "Agent-2",
+              "from_role": "领域专家",
+              "to_role": "成本估算师"
+            }
+          ]
+        }
+      },
+      "agent_outputs": {
+        "Agent-1": {
+          "content_hash": "24d49caffda02a31",
+          "content_length": 275,
+          "role": "成本估算师",
+          "content_preview": "## 方案生成\n\n### 基于前置情境分析的方案\n阅读了前置Stage输出的情境分析后, 提出以下方案:\n\n#### 方案概述\n- 技术路径: ...\n- 关键决策点: ...\n### Agent [Agent-1] 角色: 成本估算师\n### 前置Stage分析\n前置Stage (Stage 1) 有 2 个Agent产出, \n\n\n### 方案对比\n| 维度 | 方案A | 方案B |\n|---..."
+        },
+        "Agent-2": {
+          "content_hash": "9f8d67dd2a65b0fc",
+          "content_length": 275,
+          "role": "成本估算师",
+          "content_preview": "## 方案生成\n\n### 基于前置情境分析的方案\n阅读了前置Stage输出的情境分析后, 提出以下方案:\n\n#### 方案概述\n- 技术路径: ...\n- 关键决策点: ...\n### Agent [Agent-2] 角色: 成本估算师\n### 前置Stage分析\n前置Stage (Stage 1) 有 2 个Agent产出, \n\n\n### 方案对比\n| 维度 | 方案A | 方案B |\n|---..."
+        }
+      },
+      "role_assignments": [
+        {
+          "agent_id": "Agent-1",
+          "role_name": "成本估算师",
+          "abstain": false,
+          "confidence": 0.6028222757156826
+        },
+        {
+          "agent_id": "Agent-2",
+          "role_name": "成本估算师",
+          "abstain": false,
+          "confidence": 0.600904873397155
+        }
+      ],
+      "abstentions": [],
+      "gap_alerts": []
+    },
+    {
+      "stage_id": 3,
+      "stage_label": "执行实现",
+      "metadata": {
+        "stage_id": 3,
+        "started_at": "2026-05-21T05:37:46.897774+00:00",
+        "completed_at": "2026-05-21T05:37:46.897774+00:00",
+        "duration_ms": 0.03559998003765941,
+        "model_version": "",
+        "agent_count": 2,
+        "abstention_count": 0,
+        "token_usage": {},
+        "extra": {}
+      },
+      "agent_outputs": {
+        "Agent-1": {
+          "content_hash": "7a662093db8e479b",
+          "content_length": 177,
+          "role": "文档编写者",
+          "content_preview": "## 执行实现\n\n### 基于选定方案的实现\n前置方案已明确技术路径, 开始执行:\n\n```\n### 实现产物\n### Agent [Agent-1] 角色: 文档编写者\n### 前置Stage分析\n前置Stage (Stage 2) 有 2 个Agent产出, \n\n```\n\n### 执行日志\n- 步骤1: 完成\n- 步骤2: 完成\n- 步骤3: 完成"
+        },
+        "Agent-2": {
+          "content_hash": "2f2df31ec3cf257f",
+          "content_length": 177,
+          "role": "配置工程师",
+          "content_preview": "## 执行实现\n\n### 基于选定方案的实现\n前置方案已明确技术路径, 开始执行:\n\n```\n### 实现产物\n### Agent [Agent-2] 角色: 配置工程师\n### 前置Stage分析\n前置Stage (Stage 2) 有 2 个Agent产出, \n\n```\n\n### 执行日志\n- 步骤1: 完成\n- 步骤2: 完成\n- 步骤3: 完成"
+        }
+      },
+      "role_assignments": [
+        {
+          "agent_id": "Agent-1",
+          "role_name": "文档编写者",
+          "abstain": false,
+          "confidence": 0.7880623259316135
+        },
+        {
+          "agent_id": "Agent-2",
+          "role_name": "配置工程师",
+          "abstain": false,
+          "confidence": 0.6420748114450132
+        }
+      ],
+      "abstentions": [],
+      "gap_alerts": []
+    },
+    {
+      "stage_id": 4,
+      "stage_label": "质量验证",
+      "metadata": {
+        "stage_id": 4,
+        "started_at": "2026-05-21T05:37:46.897774+00:00",
+        "completed_at": "2026-05-21T05:37:46.897774+00:00",
+        "duration_ms": 0.05259999306872487,
+        "model_version": "",
+        "agent_count": 2,
+        "abstention_count": 0,
+        "token_usage": {},
+        "extra": {
+          "Agent-1_verdict": "pass",
+          "Agent-2_verdict": "pass",
+          "overall_verdict": "pass"
+        }
+      },
+      "agent_outputs": {
+        "Agent-1": {
+          "content_hash": "e33c60e06a819288",
+          "content_length": 207,
+          "role": "回归测试员",
+          "content_preview": "## 质量验证报告\n\n### 验证维度\n参照原始任务「集成测试」进行验证:\n\n#### 1. 功能完整性\n### Agent [Agent-1] 角色: 回归测试员\n### 前置Stage分析\n前置Stage (Stage 3) 有 2 个Agent产出, \n\n\n#### 2. 边界条件\n- 正常输入: PASS\n- 异常输入: PASS\n- 边界值: PASS\n\n#### 3. 综合结论\n最终判..."
+        },
+        "Agent-2": {
+          "content_hash": "04dd9514126c78e1",
+          "content_length": 207,
+          "role": "回归测试员",
+          "content_preview": "## 质量验证报告\n\n### 验证维度\n参照原始任务「集成测试」进行验证:\n\n#### 1. 功能完整性\n### Agent [Agent-2] 角色: 回归测试员\n### 前置Stage分析\n前置Stage (Stage 3) 有 2 个Agent产出, \n\n\n#### 2. 边界条件\n- 正常输入: PASS\n- 异常输入: PASS\n- 边界值: PASS\n\n#### 3. 综合结论\n最终判..."
+        }
+      },
+      "role_assignments": [
+        {
+          "agent_id": "Agent-1",
+          "role_name": "回归测试员",
+          "abstain": false,
+          "confidence": 0.6349835729599387
+        },
+        {
+          "agent_id": "Agent-2",
+          "role_name": "回归测试员",
+          "abstain": false,
+          "confidence": 0.9274460659752742
+        }
+      ],
+      "abstentions": [],
+      "gap_alerts": []
+    }
+  ]
+}

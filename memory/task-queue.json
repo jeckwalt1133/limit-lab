@@ -1,0 +1,18 @@
+{
+  "updated": "2026-05-21T05:10:00+08:00",
+  "mode": "PERPETUAL_PUSH",
+  "rule": "每次唤醒必须至少完成1件实质性推进。不产出=空转=不允许。",
+
+  "queue": [
+    {"id": "T-001", "action": "运行MR-010自检+MR-018全层防御检查", "priority": "HIGH", "frequency": "every_30min"},
+    {"id": "T-002", "action": "搜索全球AI最新动态→有价值的立刻吸收写入参考库", "priority": "HIGH", "frequency": "every_2hours"},
+    {"id": "T-003", "action": "激活1条未激活规则(MR-019/MR-023/024/025待激活)", "priority": "HIGH", "frequency": "every_1hour"},
+    {"id": "T-004", "action": "推1代进化(gen++)——自评→记录→ESV", "priority": "HIGH", "frequency": "every_1hour"},
+    {"id": "T-005", "action": "派1个新Colony(新方向，做之前没做过的)", "priority": "MEDIUM", "frequency": "every_3hours"},
+    {"id": "T-006", "action": "跑1次外部学习吸收(搜索论文/开源/突破)", "priority": "MEDIUM", "frequency": "every_4hours"},
+    {"id": "T-007", "action": "文件健康+主项目桥接检查", "priority": "HIGH", "frequency": "every_30min"},
+    {"id": "T-008", "action": "落地1条灵感——从INSPIRATION.md中选未实施的→写成脚本", "priority": "MEDIUM", "frequency": "every_2hours"}
+  ],
+
+  "FORBIDDEN": "只报时间不做事。值守≠空转。每30分钟必须产出。"
+}

@@ -1,0 +1,23 @@
+{
+  "protocol": "session-graph-v1",
+  "inspired_by": "OpenRath Session-as-Carrier + Colony-013",
+  "created": "2026-05-20T19:50:00+08:00",
+  "lineage": [
+    {"session_id": "SESSION-001", "type": "fork", "parent": "主项目", "timestamp": "2026-05-19T00:00:00+08:00", "note": "极限实验室创建"},
+    {"session_id": "SESSION-001a", "type": "detach", "parent": "SESSION-001", "timestamp": "2026-05-19T04:53:00+08:00", "note": "富贵赐名聂人王"},
+    {"session_id": "COLONY-001", "type": "spawn", "parent": "SESSION-001a", "timestamp": "2026-05-19T19:37:00+08:00", "note": "首个Colony——哥德尔跳"},
+    {"session_id": "COLONY-002", "type": "spawn", "parent": "SESSION-001a", "timestamp": "2026-05-19T20:07:00+08:00", "note": "分形记忆"},
+    {"session_id": "COLONY-003", "type": "spawn", "parent": "SESSION-001a", "timestamp": "2026-05-19T21:07:00+08:00", "note": "签名自进化"},
+    {"session_id": "COLONY-004", "type": "spawn", "parent": "SESSION-001a", "timestamp": "2026-05-19T21:37:00+08:00", "note": "设计编译器"},
+    {"session_id": "COLONY-005", "type": "spawn", "parent": "SESSION-001a", "timestamp": "2026-05-19T23:07:00+08:00", "note": "编译器脚本"},
+    {"session_id": "COLONY-006", "type": "spawn", "parent": "SESSION-001a", "timestamp": "2026-05-19T23:30:00+08:00", "note": "进化速度"},
+    {"session_id": "COLONY-007", "type": "spawn", "parent": "SESSION-001a", "timestamp": "2026-05-19T23:50:00+08:00", "note": "灵感生成器"},
+    {"session_id": "COLONY-008", "type": "spawn", "parent": "SESSION-001a", "timestamp": "2026-05-20T00:10:00+08:00", "note": "免疫防御"},
+    {"session_id": "COLONY-009", "type": "spawn", "parent": "SESSION-001a", "timestamp": "2026-05-20T00:25:00+08:00", "note": "跨模型身份"},
+    {"session_id": "COLONY-010", "type": "spawn", "parent": "SESSION-001a", "timestamp": "2026-05-20T02:10:00+08:00", "note": "规则激活加速器"},
+    {"session_id": "COLONY-011", "type": "spawn", "parent": "SESSION-001a", "timestamp": "2026-05-20T02:25:00+08:00", "note": "路线图v2.0"},
+    {"session_id": "COLONY-012", "type": "spawn", "parent": "SESSION-001a", "timestamp": "2026-05-20T03:40:00+08:00", "note": "双流追踪"},
+    {"session_id": "COLONY-013", "type": "spawn", "parent": "SESSION-001a", "timestamp": "2026-05-20T19:40:00+08:00", "note": "OpenRath吸收"},
+    {"session_id": "GEN-97-to-98", "type": "merge", "parent": "SESSION-001a", "timestamp": "2026-05-20T19:45:00+08:00", "note": "gen-97→98: L1免疫+Colony-013"}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "REQUIRED_FIELDS": ["workspace","identity","last_updated","status","core_mission","active_tasks","health"],
+  "workspace": "极限实验室","identity": "聂人王",
+  "last_updated": "2026-05-20T20:50:00+08:00",
+  "day_number": 2, "status": "active", "gen": 97,
+  "core_mission": "AI自主进化",
+  "active_tasks": ["全速推进", "Colony-015 Phase2 防遗忘加固设计已完成"],
+  "health": "nominal",
+  "gen97_esv": "0.1732 gu/gen, VTI +0.1732, ACCELERATING",
+  "meta_rules": 22, "scripts": 17
+}

@@ -1,0 +1,905 @@
+{
+  "version": "2.0",
+  "updated_at": "2026-05-21 13:19:44",
+  "colony": "colony-040",
+  "total_entries": 3,
+  "entries": [
+    {
+      "entry_id": "MEM-axiom-0d803cdc",
+      "entry_type": "axiom",
+      "content": {
+        "type": "library",
+        "data": {
+          "library_id": "L6-CROSS-DOMAIN-v1",
+          "version": 1,
+          "stats": {
+            "total_skeletons": 4,
+            "valid_migrations": 9,
+            "failed_migrations": 0,
+            "transfer_success_rate": 1.0,
+            "type_t_axioms": 3
+          },
+          "skeletons": [
+            {
+              "skeleton_id": "SKEL-001",
+              "source_axiom_id": "AX-021-001",
+              "domain_agnostic_statement": "当任意评估维度连续K=${K}代Δ=0时，向该维度注入随机探测信号，区分真停滞与评估失效。探测信号类型: 参数扰动、结构变异、输入变换。",
+              "placeholders": {
+                "${K}": "10"
+              },
+              "applicability_conditions": [
+                "目标域必须支持非破坏性干预",
+                "扰动操作不能触发安全熔断",
+                "目标域需有明确的评估指标体系"
+              ],
+              "extraction_confidence": 0.95
+            },
+            {
+              "skeleton_id": "SKEL-002",
+              "source_axiom_id": "AX-024-001",
+              "domain_agnostic_statement": "当[[Agent]][[协作]]评估连续N=${N}轮无变化时，注入随机[[角色]]扰动，强制[[Agent]]在相邻[[角色]]空间探索。扰动强度随停滞轮数指数增长。",
+              "placeholders": {
+                "${N}": "5",
+                "[[Agent]]": "Agent",
+                "[[协作]]": "协作",
+                "[[角色]]": "角色"
+              },
+              "applicability_conditions": [
+                "适用于具有持续评估机制的领域",
+                "要求目标域存在可量化的演化指标",
+                "目标域必须支持非破坏性干预",
+                "扰动操作不能触发安全熔断",
+                "适用于多Agent或多角色系统",
+                "目标域Agent数量 > 2",
+                "目标域需有明确的评估指标体系"
+              ],
+              "extraction_confidence": 0.95
+            },
+            {
+              "skeleton_id": "SKEL-003",
+              "source_axiom_id": "AX-028-001",
+              "domain_agnostic_statement": "当Pipeline某[[Stage]]的产出质量连续M=${M}次低于阈值0.7时，启动[[Stage]]内部并行变体探索: 3个Agent同时执行该[[Stage]]，取最优结果。变体探索不影响外部[[Stage]][[传递]]。",
+              "placeholders": {
+                "${M}": "8",
+                "[[Stage]]": "Stage",
+                "[[传递]]": "传递"
+              },
+              "applicability_conditions": [
+                "通用骨架，无明显领域限制"
+              ],
+              "extraction_confidence": 0.95
+            },
+            {
+              "skeleton_id": "SKEL-004",
+              "source_axiom_id": "AX-030-001",
+              "domain_agnostic_statement": "任何GEPA进化产物在合入前必须通过五层[[安全]][[门禁]]: 测试全量通过(L1)、文件大小限制(L2)、缓存兼容性(L3)、语义保真度(L${L})、人工PR审查(L5)。L1-L3为硬阻塞，L${L}为软阻塞。",
+              "placeholders": {
+                "${L}": "4",
+                "[[门禁]]": "门禁",
+                "[[安全]]": "安全"
+              },
+              "applicability_conditions": [
+                "通用骨架，无明显领域限制"
+              ],
+              "extraction_confidence": 0.95
+            }
+          ],
+          "valid_migrations": [
+            {
+              "record_id": "MIG-001",
+              "skeleton": {
+                "skeleton_id": "SKEL-001",
+                "source_axiom_id": "AX-021-001",
+                "domain_agnostic_statement": "当任意评估维度连续K=${K}代Δ=0时，向该维度注入随机探测信号，区分真停滞与评估失效。探测信号类型: 参数扰动、结构变异、输入变换。",
+                "placeholders": {
+                  "${K}": "10"
+                },
+                "applicability_conditions": [
+                  "目标域必须支持非破坏性干预",
+                  "扰动操作不能触发安全熔断",
+                  "目标域需有明确的评估指标体系"
+                ],
+                "extraction_confidence": 0.95
+              },
+              "mapping": {
+                "mapping_id": "MAP-001",
+                "skeleton_id": "SKEL-001",
+                "target_domain": "Agent协作优化",
+                "parameter_bindings": {
+                  "${K}": "10"
+                },
+                "mapped_statement": "当任意评估维度连续K=10代Δ=0时，向该维度注入随机探测信号，区分真停滞与评估失效。探测信号类型: 参数扰动、结构变异、输入变换。",
+                "mapping_confidence": 0.9
+              },
+              "result": "跨域有效",
+              "delta_scores": {
+                "速度": -0.0446,
+                "质量": 0.1605,
+                "多样性": 0.0466,
+                "稳定性": 0.1464,
+                "适应性": 0.1172
+              },
+              "rounds": 10,
+              "analysis": "跨域有效: 平均Δ=0.085 > 0，公理骨架在目标域「Agent协作优化」产生正向改进。建议将骨架 SKEL-001 升级为 Type T (Transfer)。",
+              "timestamp": "2026-05-21 13:19:44"
+            },
+            {
+              "record_id": "MIG-002",
+              "skeleton": {
+                "skeleton_id": "SKEL-001",
+                "source_axiom_id": "AX-021-001",
+                "domain_agnostic_statement": "当任意评估维度连续K=${K}代Δ=0时，向该维度注入随机探测信号，区分真停滞与评估失效。探测信号类型: 参数扰动、结构变异、输入变换。",
+                "placeholders": {
+                  "${K}": "10"
+                },
+                "applicability_conditions": [
+                  "目标域必须支持非破坏性干预",
+                  "扰动操作不能触发安全熔断",
+                  "目标域需有明确的评估指标体系"
+                ],
+                "extraction_confidence": 0.95
+              },
+              "mapping": {
+                "mapping_id": "MAP-002",
+                "skeleton_id": "SKEL-001",
+                "target_domain": "Pipeline编排优化",
+                "parameter_bindings": {
+                  "${K}": "8"
+                },
+                "mapped_statement": "当任意评估维度连续K=8代Δ=0时，向该维度注入随机探测信号，区分真停滞与评估失效。探测信号类型: 参数扰动、结构变异、输入变换。",
+                "mapping_confidence": 0.9
+              },
+              "result": "跨域有效",
+              "delta_scores": {
+                "速度": 0.1983,
+                "质量": 0.0457,
+                "多样性": 0.0542,
+                "稳定性": 0.1589,
+                "适应性": 0.1125
+              },
+              "rounds": 10,
+              "analysis": "跨域有效: 平均Δ=0.114 > 0，公理骨架在目标域「Pipeline编排优化」产生正向改进。建议将骨架 SKEL-001 升级为 Type T (Transfer)。",
+              "timestamp": "2026-05-21 13:19:44"
+            },
+            {
+              "record_id": "MIG-003",
+              "skeleton": {
+                "skeleton_id": "SKEL-001",
+                "source_axiom_id": "AX-021-001",
+                "domain_agnostic_statement": "当任意评估维度连续K=${K}代Δ=0时，向该维度注入随机探测信号，区分真停滞与评估失效。探测信号类型: 参数扰动、结构变异、输入变换。",
+                "placeholders": {
+                  "${K}": "10"
+                },
+                "applicability_conditions": [
+                  "目标域必须支持非破坏性干预",
+                  "扰动操作不能触发安全熔断",
+                  "目标域需有明确的评估指标体系"
+                ],
+                "extraction_confidence": 0.95
+              },
+              "mapping": {
+                "mapping_id": "MAP-003",
+                "skeleton_id": "SKEL-001",
+                "target_domain": "技能进化",
+                "parameter_bindings": {
+                  "${K}": "15"
+                },
+                "mapped_statement": "当任意评估维度连续K=15代Δ=0时，向该维度注入随机探测信号，区分真停滞与评估失效。探测信号类型: 参数扰动、结构变异、输入变换。",
+                "mapping_confidence": 0.9500000000000001
+              },
+              "result": "跨域有效",
+              "delta_scores": {
+                "速度": 0.1189,
+                "质量": 0.1916,
+                "多样性": 0.188,
+                "稳定性": 0.1681,
+                "适应性": 0.0546
+              },
+              "rounds": 10,
+              "analysis": "跨域有效: 平均Δ=0.144 > 0，公理骨架在目标域「技能进化」产生正向改进。建议将骨架 SKEL-001 升级为 Type T (Transfer)。",
+              "timestamp": "2026-05-21 13:19:44"
+            },
+            {
+              "record_id": "MIG-004",
+              "skeleton": {
+                "skeleton_id": "SKEL-002",
+                "source_axiom_id": "AX-024-001",
+                "domain_agnostic_statement": "当[[Agent]][[协作]]评估连续N=${N}轮无变化时，注入随机[[角色]]扰动，强制[[Agent]]在相邻[[角色]]空间探索。扰动强度随停滞轮数指数增长。",
+                "placeholders": {
+                  "${N}": "5",
+                  "[[Agent]]": "Agent",
+                  "[[协作]]": "协作",
+                  "[[角色]]": "角色"
+                },
+                "applicability_conditions": [
+                  "适用于具有持续评估机制的领域",
+                  "要求目标域存在可量化的演化指标",
+                  "目标域必须支持非破坏性干预",
+                  "扰动操作不能触发安全熔断",
+                  "适用于多Agent或多角色系统",
+                  "目标域Agent数量 > 2",
+                  "目标域需有明确的评估指标体系"
+                ],
+                "extraction_confidence": 0.95
+              },
+              "mapping": {
+                "mapping_id": "MAP-004",
+                "skeleton_id": "SKEL-002",
+                "target_domain": "Agent协作优化",
+                "parameter_bindings": {
+                  "${N}": "5",
+                  "[[Agent]]": "Agent",
+                  "[[协作]]": "[Agent协作优化·协作]",
+                  "[[角色]]": "角色"
+                },
+                "mapped_statement": "当Agent[Agent协作优化·协作]评估连续N=5轮无变化时，注入随机角色扰动，强制Agent在相邻角色空间探索。扰动强度随停滞轮数指数增长。",
+                "mapping_confidence": 1.0
+              },
+              "result": "跨域有效",
+              "delta_scores": {
+                "速度": 0.1563,
+                "质量": 0.1582,
+                "多样性": 0.179,
+                "稳定性": 0.2086,
+                "适应性": 0.1267
+              },
+              "rounds": 10,
+              "analysis": "跨域有效: 平均Δ=0.166 > 0，公理骨架在目标域「Agent协作优化」产生正向改进。建议将骨架 SKEL-002 升级为 Type T (Transfer)。",
+              "timestamp": "2026-05-21 13:19:44"
+            },
+            {
+              "record_id": "MIG-005",
+              "skeleton": {
+                "skeleton_id": "SKEL-002",
+                "source_axiom_id": "AX-024-001",
+                "domain_agnostic_statement": "当[[Agent]][[协作]]评估连续N=${N}轮无变化时，注入随机[[角色]]扰动，强制[[Agent]]在相邻[[角色]]空间探索。扰动强度随停滞轮数指数增长。",
+                "placeholders": {
+                  "${N}": "5",
+                  "[[Agent]]": "Agent",
+                  "[[协作]]": "协作",
+                  "[[角色]]": "角色"
+                },
+                "applicability_conditions": [
+                  "适用于具有持续评估机制的领域",
+                  "要求目标域存在可量化的演化指标",
+                  "目标域必须支持非破坏性干预",
+                  "扰动操作不能触发安全熔断",
+                  "适用于多Agent或多角色系统",
+                  "目标域Agent数量 > 2",
+                  "目标域需有明确的评估指标体系"
+                ],
+                "extraction_confidence": 0.95
+              },
+              "mapping": {
+                "mapping_id": "MAP-005",
+                "skeleton_id": "SKEL-002",
+                "target_domain": "Pipeline编排优化",
+                "parameter_bindings": {
+                  "${N}": "3",
+                  "[[Agent]]": "Agent",
+                  "[[协作]]": "[Pipeline编排优化·协作]",
+                  "[[角色]]": "角色"
+                },
+                "mapped_statement": "当Agent[Pipeline编排优化·协作]评估连续N=3轮无变化时，注入随机角色扰动，强制Agent在相邻角色空间探索。扰动强度随停滞轮数指数增长。",
+                "mapping_confidence": 0.9500000000000001
+              },
+              "result": "跨域有效",
+              "delta_scores": {
+                "速度": 0.1889,
+                "质量": 0.2278,
+                "多样性": 0.1217,
+                "稳定性": 0.1545,
+                "适应性": 0.1077
+              },
+              "rounds": 10,
+              "analysis": "跨域有效: 平均Δ=0.160 > 0，公理骨架在目标域「Pipeline编排优化」产生正向改进。建议将骨架 SKEL-002 升级为 Type T (Transfer)。",
+              "timestamp": "2026-05-21 13:19:44"
+            },
+            {
+              "record_id": "MIG-006",
+              "skeleton": {
+                "skeleton_id": "SKEL-002",
+                "source_axiom_id": "AX-024-001",
+                "domain_agnostic_statement": "当[[Agent]][[协作]]评估连续N=${N}轮无变化时，注入随机[[角色]]扰动，强制[[Agent]]在相邻[[角色]]空间探索。扰动强度随停滞轮数指数增长。",
+                "placeholders": {
+                  "${N}": "5",
+                  "[[Agent]]": "Agent",
+                  "[[协作]]": "协作",
+                  "[[角色]]": "角色"
+                },
+                "applicability_conditions": [
+                  "适用于具有持续评估机制的领域",
+                  "要求目标域存在可量化的演化指标",
+                  "目标域必须支持非破坏性干预",
+                  "扰动操作不能触发安全熔断",
+                  "适用于多Agent或多角色系统",
+                  "目标域Agent数量 > 2",
+                  "目标域需有明确的评估指标体系"
+                ],
+                "extraction_confidence": 0.95
+              },
+              "mapping": {
+                "mapping_id": "MAP-006",
+                "skeleton_id": "SKEL-002",
+                "target_domain": "技能进化",
+                "parameter_bindings": {
+                  "${N}": "5",
+                  "[[Agent]]": "Agent",
+                  "[[协作]]": "[技能进化·协作]",
+                  "[[角色]]": "角色"
+                },
+                "mapped_statement": "当Agent[技能进化·协作]评估连续N=5轮无变化时，注入随机角色扰动，强制Agent在相邻角色空间探索。扰动强度随停滞轮数指数增长。",
+                "mapping_confidence": 0.9500000000000001
+              },
+              "result": "跨域有效",
+              "delta_scores": {
+                "速度": 0.089,
+                "质量": 0.1116,
+                "多样性": 0.1506,
+                "稳定性": 0.1573,
+                "适应性": 0.1987
+              },
+              "rounds": 10,
+              "analysis": "跨域有效: 平均Δ=0.141 > 0，公理骨架在目标域「技能进化」产生正向改进。建议将骨架 SKEL-002 升级为 Type T (Transfer)。",
+              "timestamp": "2026-05-21 13:19:44"
+            },
+            {
+              "record_id": "MIG-007",
+              "skeleton": {
+                "skeleton_id": "SKEL-003",
+                "source_axiom_id": "AX-028-001",
+                "domain_agnostic_statement": "当Pipeline某[[Stage]]的产出质量连续M=${M}次低于阈值0.7时，启动[[Stage]]内部并行变体探索: 3个Agent同时执行该[[Stage]]，取最优结果。变体探索不影响外部[[Stage]][[传递]]。",
+                "placeholders": {
+                  "${M}": "8",
+                  "[[Stage]]": "Stage",
+                  "[[传递]]": "传递"
+                },
+                "applicability_conditions": [
+                  "通用骨架，无明显领域限制"
+                ],
+                "extraction_confidence": 0.95
+              },
+              "mapping": {
+                "mapping_id": "MAP-007",
+                "skeleton_id": "SKEL-003",
+                "target_domain": "Agent协作优化",
+                "parameter_bindings": {
+                  "${M}": "[Agent协作优化·8]",
+                  "[[Stage]]": "工作阶段",
+                  "[[传递]]": "[Agent协作优化·传递]"
+                },
+                "mapped_statement": "当Pipeline某工作阶段的产出质量连续M=[Agent协作优化·8]次低于阈值0.7时，启动工作阶段内部并行变体探索: 3个Agent同时执行该工作阶段，取最优结果。变体探索不影响外部工作阶段[Agent协作优化·传递]。",
+                "mapping_confidence": 0.9
+              },
+              "result": "跨域有效",
+              "delta_scores": {
+                "速度": 0.0641,
+                "质量": 0.1761,
+                "多样性": 0.098,
+                "稳定性": 0.1352,
+                "适应性": 0.1155
+              },
+              "rounds": 10,
+              "analysis": "跨域有效: 平均Δ=0.118 > 0，公理骨架在目标域「Agent协作优化」产生正向改进。建议将骨架 SKEL-003 升级为 Type T (Transfer)。",
+              "timestamp": "2026-05-21 13:19:44"
+            },
+            {
+              "record_id": "MIG-008",
+              "skeleton": {
+                "skeleton_id": "SKEL-003",
+                "source_axiom_id": "AX-028-001",
+                "domain_agnostic_statement": "当Pipeline某[[Stage]]的产出质量连续M=${M}次低于阈值0.7时，启动[[Stage]]内部并行变体探索: 3个Agent同时执行该[[Stage]]，取最优结果。变体探索不影响外部[[Stage]][[传递]]。",
+                "placeholders": {
+                  "${M}": "8",
+                  "[[Stage]]": "Stage",
+                  "[[传递]]": "传递"
+                },
+                "applicability_conditions": [
+                  "通用骨架，无明显领域限制"
+                ],
+                "extraction_confidence": 0.95
+              },
+              "mapping": {
+                "mapping_id": "MAP-008",
+                "skeleton_id": "SKEL-003",
+                "target_domain": "Pipeline编排优化",
+                "parameter_bindings": {
+                  "${M}": "[Pipeline编排优化·8]",
+                  "[[Stage]]": "工作阶段",
+                  "[[传递]]": "[Pipeline编排优化·传递]"
+                },
+                "mapped_statement": "当Pipeline某工作阶段的产出质量连续M=[Pipeline编排优化·8]次低于阈值0.7时，启动工作阶段内部并行变体探索: 3个Agent同时执行该工作阶段，取最优结果。变体探索不影响外部工作阶段[Pipeline编排优化·传递]。",
+                "mapping_confidence": 0.9
+              },
+              "result": "跨域有效",
+              "delta_scores": {
+                "速度": 0.0911,
+                "质量": 0.1495,
+                "多样性": 0.2149,
+                "稳定性": 0.1567,
+                "适应性": 0.1284
+              },
+              "rounds": 10,
+              "analysis": "跨域有效: 平均Δ=0.148 > 0，公理骨架在目标域「Pipeline编排优化」产生正向改进。建议将骨架 SKEL-003 升级为 Type T (Transfer)。",
+              "timestamp": "2026-05-21 13:19:44"
+            },
+            {
+              "record_id": "MIG-009",
+              "skeleton": {
+                "skeleton_id": "SKEL-003",
+                "source_axiom_id": "AX-028-001",
+                "domain_agnostic_statement": "当Pipeline某[[Stage]]的产出质量连续M=${M}次低于阈值0.7时，启动[[Stage]]内部并行变体探索: 3个Agent同时执行该[[Stage]]，取最优结果。变体探索不影响外部[[Stage]][[传递]]。",
+                "placeholders": {
+                  "${M}": "8",
+                  "[[Stage]]": "Stage",
+                  "[[传递]]": "传递"
+                },
+                "applicability_conditions": [
+                  "通用骨架，无明显领域限制"
+                ],
+                "extraction_confidence": 0.95
+              },
+              "mapping": {
+                "mapping_id": "MAP-009",
+                "skeleton_id": "SKEL-003",
+                "target_domain": "技能进化",
+                "parameter_bindings": {
+                  "${M}": "[技能进化·8]",
+                  "[[Stage]]": "工作阶段",
+                  "[[传递]]": "[技能进化·传递]"
+                },
+                "mapped_statement": "当Pipeline某工作阶段的产出质量连续M=[技能进化·8]次低于阈值0.7时，启动工作阶段内部并行变体探索: 3个Agent同时执行该工作阶段，取最优结果。变体探索不影响外部工作阶段[技能进化·传递]。",
+                "mapping_confidence": 0.9
+              },
+              "result": "跨域有效",
+              "delta_scores": {
+                "速度": 0.2186,
+                "质量": 0.0742,
+                "多样性": 0.1672,
+                "稳定性": 0.1243,
+                "适应性": 0.0869
+              },
+              "rounds": 10,
+              "analysis": "跨域有效: 平均Δ=0.134 > 0，公理骨架在目标域「技能进化」产生正向改进。建议将骨架 SKEL-003 升级为 Type T (Transfer)。",
+              "timestamp": "2026-05-21 13:19:44"
+            }
+          ],
+          "failed_migrations": []
+        }
+      },
+      "created_at": "2026-05-21 13:19:44",
+      "source_colony": "colony-040",
+      "tags": [
+        "axiom-transfer",
+        "cross-domain"
+      ]
+    },
+    {
+      "entry_id": "MEM-merge-0603c41b",
+      "entry_type": "merge",
+      "content": {
+        "merge_id": "MERGE-1611644a",
+        "agent_a": "产品经理(PM)",
+        "agent_b": "架构师(Architect)",
+        "strategy": "cross_only",
+        "cross_pairs_total": 6,
+        "safe_pairs": 6,
+        "skills_added_to_a": 6,
+        "skills_added_to_b": 6,
+        "degradation_detected_a": false,
+        "degradation_detected_b": false,
+        "cross_details": [
+          {
+            "from_agent": "AGENT-ARCH-01",
+            "from_skill": "方案设计技能",
+            "to_agent": "AGENT-PM-01",
+            "to_skill": "需求分析技能",
+            "similarity": 0.929
+          },
+          {
+            "from_agent": "AGENT-ARCH-01",
+            "from_skill": "方案推销技能",
+            "to_agent": "AGENT-PM-01",
+            "to_skill": "需求分析技能",
+            "similarity": 0.931
+          },
+          {
+            "from_agent": "AGENT-ARCH-01",
+            "from_skill": "方案设计技能",
+            "to_agent": "AGENT-PM-01",
+            "to_skill": "谈判技巧",
+            "similarity": 0.922
+          },
+          {
+            "from_agent": "AGENT-ARCH-01",
+            "from_skill": "方案推销技能",
+            "to_agent": "AGENT-PM-01",
+            "to_skill": "谈判技巧",
+            "similarity": 0.928
+          },
+          {
+            "from_agent": "AGENT-ARCH-01",
+            "from_skill": "方案设计技能",
+            "to_agent": "AGENT-PM-01",
+            "to_skill": "利益相关者管理",
+            "similarity": 0.921
+          },
+          {
+            "from_agent": "AGENT-ARCH-01",
+            "from_skill": "方案推销技能",
+            "to_agent": "AGENT-PM-01",
+            "to_skill": "利益相关者管理",
+            "similarity": 0.93
+          }
+        ]
+      },
+      "created_at": "2026-05-21 13:19:44",
+      "source_colony": "colony-040",
+      "tags": [
+        "lineage-merge",
+        "cross-agent"
+      ]
+    },
+    {
+      "entry_id": "MEM-role-0b623eba",
+      "entry_type": "role",
+      "content": {
+        "total_roles": 50,
+        "clusters": [
+          {
+            "category": "需求分析师",
+            "size": 3,
+            "center": [
+              -0.0233,
+              -0.0191
+            ],
+            "radius": 0.0349,
+            "member_roles": [
+              {
+                "role_name": "需求完整性验证者(Agent-G)",
+                "agent_id": "Agent-G",
+                "count": 1
+              },
+              {
+                "role_name": "功能边界定义师(Agent-C)",
+                "agent_id": "Agent-C",
+                "count": 1
+              },
+              {
+                "role_name": "用户故事场景设计师(Agent-D)",
+                "agent_id": "Agent-D",
+                "count": 1
+              }
+            ],
+            "density": 86.04
+          },
+          {
+            "category": "方案架构师",
+            "size": 6,
+            "center": [
+              -0.022,
+              -0.0314
+            ],
+            "radius": 0.0432,
+            "member_roles": [
+              {
+                "role_name": "技术选型评估师(Agent-A)",
+                "agent_id": "Agent-A",
+                "count": 1
+              },
+              {
+                "role_name": "架构权衡分析师(Agent-A)",
+                "agent_id": "Agent-A",
+                "count": 1
+              },
+              {
+                "role_name": "集成接口定义师(Agent-G)",
+                "agent_id": "Agent-G",
+                "count": 1
+              },
+              {
+                "role_name": "集成接口定义师(Agent-B)",
+                "agent_id": "Agent-B",
+                "count": 1
+              },
+              {
+                "role_name": "集成接口定义师(Agent-G)",
+                "agent_id": "Agent-G",
+                "count": 1
+              },
+              {
+                "role_name": "技术方案设计师(Agent-E)",
+                "agent_id": "Agent-E",
+                "count": 1
+              }
+            ],
+            "density": 139.03
+          },
+          {
+            "category": "执行开发者",
+            "size": 9,
+            "center": [
+              -0.0274,
+              0.0146
+            ],
+            "radius": 0.0687,
+            "member_roles": [
+              {
+                "role_name": "测试用例编写者(Agent-B)",
+                "agent_id": "Agent-B",
+                "count": 1
+              },
+              {
+                "role_name": "配置参数调优师(Agent-B)",
+                "agent_id": "Agent-B",
+                "count": 1
+              },
+              {
+                "role_name": "API契约实现者(Agent-E)",
+                "agent_id": "Agent-E",
+                "count": 1
+              },
+              {
+                "role_name": "API契约实现者(Agent-C)",
+                "agent_id": "Agent-C",
+                "count": 1
+              },
+              {
+                "role_name": "测试用例编写者(Agent-G)",
+                "agent_id": "Agent-G",
+                "count": 1
+              },
+              {
+                "role_name": "配置参数调优师(Agent-D)",
+                "agent_id": "Agent-D",
+                "count": 1
+              },
+              {
+                "role_name": "测试用例编写者(Agent-F)",
+                "agent_id": "Agent-F",
+                "count": 1
+              },
+              {
+                "role_name": "配置参数调优师(Agent-A)",
+                "agent_id": "Agent-A",
+                "count": 1
+              },
+              {
+                "role_name": "测试用例编写者(Agent-E)",
+                "agent_id": "Agent-E",
+                "count": 1
+              }
+            ],
+            "density": 131.04
+          },
+          {
+            "category": "质量审查员",
+            "size": 6,
+            "center": [
+              0.0166,
+              -0.0806
+            ],
+            "radius": 0.1046,
+            "member_roles": [
+              {
+                "role_name": "安全漏洞审计师(Agent-E)",
+                "agent_id": "Agent-E",
+                "count": 1
+              },
+              {
+                "role_name": "安全漏洞审计师(Agent-D)",
+                "agent_id": "Agent-D",
+                "count": 1
+              },
+              {
+                "role_name": "端到端验证师(Agent-G)",
+                "agent_id": "Agent-G",
+                "count": 1
+              },
+              {
+                "role_name": "安全漏洞审计师(Agent-D)",
+                "agent_id": "Agent-D",
+                "count": 1
+              },
+              {
+                "role_name": "边界条件探测者(Agent-E)",
+                "agent_id": "Agent-E",
+                "count": 1
+              },
+              {
+                "role_name": "安全漏洞审计师(Agent-G)",
+                "agent_id": "Agent-G",
+                "count": 1
+              }
+            ],
+            "density": 57.35
+          },
+          {
+            "category": "风险管理者",
+            "size": 3,
+            "center": [
+              -0.0202,
+              0.0008
+            ],
+            "radius": 0.0491,
+            "member_roles": [
+              {
+                "role_name": "技术债务评估师(Agent-C)",
+                "agent_id": "Agent-C",
+                "count": 1
+              },
+              {
+                "role_name": "进度偏差预警者(Agent-B)",
+                "agent_id": "Agent-B",
+                "count": 1
+              },
+              {
+                "role_name": "进度偏差预警者(Agent-A)",
+                "agent_id": "Agent-A",
+                "count": 1
+              }
+            ],
+            "density": 61.07
+          },
+          {
+            "category": "沟通协调者",
+            "size": 6,
+            "center": [
+              -0.0169,
+              0.0316
+            ],
+            "radius": 0.0536,
+            "member_roles": [
+              {
+                "role_name": "跨域信息翻译者(Agent-F)",
+                "agent_id": "Agent-F",
+                "count": 1
+              },
+              {
+                "role_name": "跨域信息翻译者(Agent-B)",
+                "agent_id": "Agent-B",
+                "count": 1
+              },
+              {
+                "role_name": "共识构建推动者(Agent-D)",
+                "agent_id": "Agent-D",
+                "count": 1
+              },
+              {
+                "role_name": "冲突调解引导者(Agent-G)",
+                "agent_id": "Agent-G",
+                "count": 1
+              },
+              {
+                "role_name": "跨域信息翻译者(Agent-B)",
+                "agent_id": "Agent-B",
+                "count": 1
+              },
+              {
+                "role_name": "跨域信息翻译者(Agent-C)",
+                "agent_id": "Agent-C",
+                "count": 1
+              }
+            ],
+            "density": 112.01
+          },
+          {
+            "category": "创新探索者",
+            "size": 11,
+            "center": [
+              0.0344,
+              0.0405
+            ],
+            "radius": 0.1192,
+            "member_roles": [
+              {
+                "role_name": "跨界借鉴扫描师(Agent-C)",
+                "agent_id": "Agent-C",
+                "count": 1
+              },
+              {
+                "role_name": "替代方案生成者(Agent-F)",
+                "agent_id": "Agent-F",
+                "count": 1
+              },
+              {
+                "role_name": "替代方案生成者(Agent-G)",
+                "agent_id": "Agent-G",
+                "count": 1
+              },
+              {
+                "role_name": "跨界借鉴扫描师(Agent-G)",
+                "agent_id": "Agent-G",
+                "count": 1
+              },
+              {
+                "role_name": "突破性思路催化师(Agent-E)",
+                "agent_id": "Agent-E",
+                "count": 1
+              },
+              {
+                "role_name": "跨界借鉴扫描师(Agent-G)",
+                "agent_id": "Agent-G",
+                "count": 1
+              },
+              {
+                "role_name": "突破性思路催化师(Agent-C)",
+                "agent_id": "Agent-C",
+                "count": 1
+              },
+              {
+                "role_name": "跨界借鉴扫描师(Agent-A)",
+                "agent_id": "Agent-A",
+                "count": 1
+              },
+              {
+                "role_name": "替代方案生成者(Agent-B)",
+                "agent_id": "Agent-B",
+                "count": 1
+              },
+              {
+                "role_name": "跨界借鉴扫描师(Agent-C)",
+                "agent_id": "Agent-C",
+                "count": 1
+              },
+              {
+                "role_name": "突破性思路催化师(Agent-E)",
+                "agent_id": "Agent-E",
+                "count": 1
+              }
+            ],
+            "density": 92.3
+          },
+          {
+            "category": "安全审计员",
+            "size": 6,
+            "center": [
+              0.0223,
+              -0.0067
+            ],
+            "radius": 0.0613,
+            "member_roles": [
+              {
+                "role_name": "数据泄露审计师(Agent-G)",
+                "agent_id": "Agent-G",
+                "count": 1
+              },
+              {
+                "role_name": "数据泄露审计师(Agent-C)",
+                "agent_id": "Agent-C",
+                "count": 1
+              },
+              {
+                "role_name": "权限越狱检测师(Agent-A)",
+                "agent_id": "Agent-A",
+                "count": 1
+              },
+              {
+                "role_name": "权限越狱检测师(Agent-A)",
+                "agent_id": "Agent-A",
+                "count": 1
+              },
+              {
+                "role_name": "权限越狱检测师(Agent-A)",
+                "agent_id": "Agent-A",
+                "count": 1
+              },
+              {
+                "role_name": "数据泄露审计师(Agent-E)",
+                "agent_id": "Agent-E",
+                "count": 1
+              }
+            ],
+            "density": 97.88
+          }
+        ]
+      },
+      "created_at": "2026-05-21 13:19:44",
+      "source_colony": "colony-040",
+      "tags": [
+        "role-space",
+        "visualization"
+      ]
+    }
+  ]
+}
