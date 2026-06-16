@@ -1,0 +1,26 @@
+{
+  "MEM-000000": {
+    "content": "简单处理",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T20:27:20.816610",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000001": {
+    "content": "复杂推理需要深度思考和多步分析",
+    "layer": "L3",
+    "importance": 0.15,
+    "timestamp": "2026-06-16T20:27:20.816610",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000002": {
+    "content": "架构重构和系统重设计",
+    "layer": "L3",
+    "importance": 0.1,
+    "timestamp": "2026-06-16T20:27:20.817604",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  }
+}

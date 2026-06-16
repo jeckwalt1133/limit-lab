@@ -1,0 +1,10 @@
+{
+  "MEM-000000": {
+    "content": "测试",
+    "layer": "L3",
+    "importance": 0.02,
+    "timestamp": "2026-06-16T20:05:33.327638",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  }
+}

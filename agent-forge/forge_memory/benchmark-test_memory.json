@@ -1,0 +1,802 @@
+{
+  "MEM-000000": {
+    "content": "分析数据",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.062507",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000001": {
+    "content": "更新配置",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.064519",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000002": {
+    "content": "生成报告",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.064519",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000003": {
+    "content": "查询用户",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.065518",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000004": {
+    "content": "优化查询",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.065518",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000005": {
+    "content": "分析数据",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.065518",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000006": {
+    "content": "更新配置",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.065518",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000007": {
+    "content": "生成报告",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.066519",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000008": {
+    "content": "查询用户",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.066519",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000009": {
+    "content": "优化查询",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.066519",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000010": {
+    "content": "分析数据",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.067510",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000011": {
+    "content": "更新配置",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.067510",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000012": {
+    "content": "生成报告",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.067510",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000013": {
+    "content": "查询用户",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.068509",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000014": {
+    "content": "优化查询",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.068509",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000015": {
+    "content": "分析数据",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.069513",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000016": {
+    "content": "更新配置",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.069513",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000017": {
+    "content": "生成报告",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.070278",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000018": {
+    "content": "查询用户",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.070278",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000019": {
+    "content": "优化查询",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.070838",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000020": {
+    "content": "分析数据",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.071380",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000021": {
+    "content": "更新配置",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.071897",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000022": {
+    "content": "生成报告",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.072468",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000023": {
+    "content": "查询用户",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.073125",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000024": {
+    "content": "优化查询",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.074159",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000025": {
+    "content": "分析数据",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.075134",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000026": {
+    "content": "更新配置",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.076136",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000027": {
+    "content": "生成报告",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.077140",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000028": {
+    "content": "查询用户",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.078157",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000029": {
+    "content": "优化查询",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.079155",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000030": {
+    "content": "分析数据",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.079155",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000031": {
+    "content": "更新配置",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.080156",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000032": {
+    "content": "生成报告",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.081650",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000033": {
+    "content": "查询用户",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.081650",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000034": {
+    "content": "优化查询",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.082684",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000035": {
+    "content": "分析数据",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.083882",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000036": {
+    "content": "更新配置",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.084884",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000037": {
+    "content": "生成报告",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.085882",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000038": {
+    "content": "查询用户",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.086881",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000039": {
+    "content": "优化查询",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.087900",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000040": {
+    "content": "分析数据",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.088497",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000041": {
+    "content": "更新配置",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.089512",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000042": {
+    "content": "生成报告",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.089512",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000043": {
+    "content": "查询用户",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.091067",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000044": {
+    "content": "优化查询",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.091591",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000045": {
+    "content": "分析数据",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.092332",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000046": {
+    "content": "更新配置",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.092837",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000047": {
+    "content": "生成报告",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.093881",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000048": {
+    "content": "查询用户",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.094854",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000049": {
+    "content": "优化查询",
+    "layer": "L3",
+    "importance": 0.04,
+    "timestamp": "2026-06-16T19:47:00.095361",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000050": {
+    "content": "测试记忆条目#0: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.3,
+    "timestamp": "2026-06-16T19:47:00.096367",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000051": {
+    "content": "测试记忆条目#1: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.4,
+    "timestamp": "2026-06-16T19:47:00.096367",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000052": {
+    "content": "测试记忆条目#2: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-16T19:47:00.097381",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000053": {
+    "content": "测试记忆条目#3: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.6000000000000001,
+    "timestamp": "2026-06-16T19:47:00.098379",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000054": {
+    "content": "测试记忆条目#4: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.7,
+    "timestamp": "2026-06-16T19:47:00.099372",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000055": {
+    "content": "测试记忆条目#5: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.8,
+    "timestamp": "2026-06-16T19:47:00.100371",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000056": {
+    "content": "测试记忆条目#6: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.9000000000000001,
+    "timestamp": "2026-06-16T19:47:00.101218",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000057": {
+    "content": "测试记忆条目#7: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.3,
+    "timestamp": "2026-06-16T19:47:00.101735",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000058": {
+    "content": "测试记忆条目#8: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.4,
+    "timestamp": "2026-06-16T19:47:00.102744",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000059": {
+    "content": "测试记忆条目#9: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-16T19:47:00.103745",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000060": {
+    "content": "测试记忆条目#10: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.6000000000000001,
+    "timestamp": "2026-06-16T19:47:00.103745",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000061": {
+    "content": "测试记忆条目#11: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.7,
+    "timestamp": "2026-06-16T19:47:00.105249",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000062": {
+    "content": "测试记忆条目#12: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.8,
+    "timestamp": "2026-06-16T19:47:00.105249",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000063": {
+    "content": "测试记忆条目#13: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.9000000000000001,
+    "timestamp": "2026-06-16T19:47:00.106258",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000064": {
+    "content": "测试记忆条目#14: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.3,
+    "timestamp": "2026-06-16T19:47:00.107254",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000065": {
+    "content": "测试记忆条目#15: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.4,
+    "timestamp": "2026-06-16T19:47:00.108268",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000066": {
+    "content": "测试记忆条目#16: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-16T19:47:00.109258",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000067": {
+    "content": "测试记忆条目#17: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.6000000000000001,
+    "timestamp": "2026-06-16T19:47:00.110258",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000068": {
+    "content": "测试记忆条目#18: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.7,
+    "timestamp": "2026-06-16T19:47:00.110258",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000069": {
+    "content": "测试记忆条目#19: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.8,
+    "timestamp": "2026-06-16T19:47:00.111767",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000070": {
+    "content": "测试记忆条目#20: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.9000000000000001,
+    "timestamp": "2026-06-16T19:47:00.112773",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000071": {
+    "content": "测试记忆条目#21: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.3,
+    "timestamp": "2026-06-16T19:47:00.114270",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000072": {
+    "content": "测试记忆条目#22: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.4,
+    "timestamp": "2026-06-16T19:47:00.114776",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000073": {
+    "content": "测试记忆条目#23: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-16T19:47:00.116788",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000074": {
+    "content": "测试记忆条目#24: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.6000000000000001,
+    "timestamp": "2026-06-16T19:47:00.118080",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000075": {
+    "content": "测试记忆条目#25: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.7,
+    "timestamp": "2026-06-16T19:47:00.119083",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000076": {
+    "content": "测试记忆条目#26: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.8,
+    "timestamp": "2026-06-16T19:47:00.120723",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000077": {
+    "content": "测试记忆条目#27: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.9000000000000001,
+    "timestamp": "2026-06-16T19:47:00.121701",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000078": {
+    "content": "测试记忆条目#28: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.3,
+    "timestamp": "2026-06-16T19:47:00.123231",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000079": {
+    "content": "测试记忆条目#29: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.4,
+    "timestamp": "2026-06-16T19:47:00.124246",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000080": {
+    "content": "测试记忆条目#30: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-16T19:47:00.125248",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000081": {
+    "content": "测试记忆条目#31: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.6000000000000001,
+    "timestamp": "2026-06-16T19:47:00.126249",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000082": {
+    "content": "测试记忆条目#32: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.7,
+    "timestamp": "2026-06-16T19:47:00.127250",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000083": {
+    "content": "测试记忆条目#33: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.8,
+    "timestamp": "2026-06-16T19:47:00.128246",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000084": {
+    "content": "测试记忆条目#34: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.9000000000000001,
+    "timestamp": "2026-06-16T19:47:00.129248",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000085": {
+    "content": "测试记忆条目#35: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.3,
+    "timestamp": "2026-06-16T19:47:00.130247",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000086": {
+    "content": "测试记忆条目#36: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.4,
+    "timestamp": "2026-06-16T19:47:00.131767",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000087": {
+    "content": "测试记忆条目#37: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-16T19:47:00.132787",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000088": {
+    "content": "测试记忆条目#38: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.6000000000000001,
+    "timestamp": "2026-06-16T19:47:00.133784",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000089": {
+    "content": "测试记忆条目#39: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.7,
+    "timestamp": "2026-06-16T19:47:00.135784",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000090": {
+    "content": "测试记忆条目#40: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.8,
+    "timestamp": "2026-06-16T19:47:00.136816",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000091": {
+    "content": "测试记忆条目#41: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.9000000000000001,
+    "timestamp": "2026-06-16T19:47:00.137776",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000092": {
+    "content": "测试记忆条目#42: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.3,
+    "timestamp": "2026-06-16T19:47:00.137776",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000093": {
+    "content": "测试记忆条目#43: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.4,
+    "timestamp": "2026-06-16T19:47:00.140232",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000094": {
+    "content": "测试记忆条目#44: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-16T19:47:00.141775",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000095": {
+    "content": "测试记忆条目#45: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.6000000000000001,
+    "timestamp": "2026-06-16T19:47:00.143782",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000096": {
+    "content": "测试记忆条目#46: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.7,
+    "timestamp": "2026-06-16T19:47:00.145791",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000097": {
+    "content": "测试记忆条目#47: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.8,
+    "timestamp": "2026-06-16T19:47:00.146792",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000098": {
+    "content": "测试记忆条目#48: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.9000000000000001,
+    "timestamp": "2026-06-16T19:47:00.148313",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000099": {
+    "content": "测试记忆条目#49: 包含重要数据",
+    "layer": "L3",
+    "importance": 0.3,
+    "timestamp": "2026-06-16T19:47:00.149330",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  }
+}

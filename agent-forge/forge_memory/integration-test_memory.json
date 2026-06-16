@@ -1,0 +1,10 @@
+{
+  "MEM-000000": {
+    "content": "帮我分析这份销售数据",
+    "layer": "L3",
+    "importance": 0.1,
+    "timestamp": "2026-06-16T19:15:08.837817",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  }
+}
