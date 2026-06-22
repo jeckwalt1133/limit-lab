@@ -1,0 +1,482 @@
+{
+  "MEM-000000": {
+    "content": "客户数据记录#0: 购买金额1000元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.878467",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000001": {
+    "content": "客户数据记录#1: 购买金额1050元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.878972",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000002": {
+    "content": "客户数据记录#2: 购买金额1100元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.879982",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000003": {
+    "content": "客户数据记录#3: 购买金额1150元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.879982",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000004": {
+    "content": "客户数据记录#4: 购买金额1200元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.879982",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000005": {
+    "content": "客户数据记录#5: 购买金额1250元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.879982",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000006": {
+    "content": "客户数据记录#6: 购买金额1300元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.880981",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000007": {
+    "content": "客户数据记录#7: 购买金额1350元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.880981",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000008": {
+    "content": "客户数据记录#8: 购买金额1400元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.880981",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000009": {
+    "content": "客户数据记录#9: 购买金额1450元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.880981",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000010": {
+    "content": "客户数据记录#10: 购买金额1500元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.882486",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000011": {
+    "content": "客户数据记录#11: 购买金额1550元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.882486",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000012": {
+    "content": "客户数据记录#12: 购买金额1600元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.882486",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000013": {
+    "content": "客户数据记录#13: 购买金额1650元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.884008",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000014": {
+    "content": "客户数据记录#14: 购买金额1700元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.884008",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000015": {
+    "content": "客户数据记录#15: 购买金额1750元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.884008",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000016": {
+    "content": "客户数据记录#16: 购买金额1800元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.885039",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000017": {
+    "content": "客户数据记录#17: 购买金额1850元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.885039",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000018": {
+    "content": "客户数据记录#18: 购买金额1900元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.886029",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000019": {
+    "content": "客户数据记录#19: 购买金额1950元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.887038",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000020": {
+    "content": "客户数据记录#20: 购买金额2000元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.887038",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000021": {
+    "content": "客户数据记录#21: 购买金额2050元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.887038",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000022": {
+    "content": "客户数据记录#22: 购买金额2100元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.888548",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000023": {
+    "content": "客户数据记录#23: 购买金额2150元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.888548",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000024": {
+    "content": "客户数据记录#24: 购买金额2200元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.890157",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000025": {
+    "content": "客户数据记录#25: 购买金额2250元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.890157",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000026": {
+    "content": "客户数据记录#26: 购买金额2300元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.891167",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000027": {
+    "content": "客户数据记录#27: 购买金额2350元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.891167",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000028": {
+    "content": "客户数据记录#28: 购买金额2400元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.892693",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000029": {
+    "content": "客户数据记录#29: 购买金额2450元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:36.892693",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000030": {
+    "content": "客户数据记录#0: 购买金额1000元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.326815",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000031": {
+    "content": "客户数据记录#1: 购买金额1050元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.328320",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000032": {
+    "content": "客户数据记录#2: 购买金额1100元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.329328",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000033": {
+    "content": "客户数据记录#3: 购买金额1150元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.329328",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000034": {
+    "content": "客户数据记录#4: 购买金额1200元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.330334",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000035": {
+    "content": "客户数据记录#5: 购买金额1250元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.331108",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000036": {
+    "content": "客户数据记录#6: 购买金额1300元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.332114",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000037": {
+    "content": "客户数据记录#7: 购买金额1350元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.332114",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000038": {
+    "content": "客户数据记录#8: 购买金额1400元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.333114",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000039": {
+    "content": "客户数据记录#9: 购买金额1450元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.333496",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000040": {
+    "content": "客户数据记录#10: 购买金额1500元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.334000",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000041": {
+    "content": "客户数据记录#11: 购买金额1550元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.335005",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000042": {
+    "content": "客户数据记录#12: 购买金额1600元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.335005",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000043": {
+    "content": "客户数据记录#13: 购买金额1650元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.336006",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000044": {
+    "content": "客户数据记录#14: 购买金额1700元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.337005",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000045": {
+    "content": "客户数据记录#15: 购买金额1750元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.337005",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000046": {
+    "content": "客户数据记录#16: 购买金额1800元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.338005",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000047": {
+    "content": "客户数据记录#17: 购买金额1850元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.339014",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000048": {
+    "content": "客户数据记录#18: 购买金额1900元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.339758",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000049": {
+    "content": "客户数据记录#19: 购买金额1950元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.340771",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000050": {
+    "content": "客户数据记录#20: 购买金额2000元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.341794",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000051": {
+    "content": "客户数据记录#21: 购买金额2050元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.341794",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000052": {
+    "content": "客户数据记录#22: 购买金额2100元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.342764",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000053": {
+    "content": "客户数据记录#23: 购买金额2150元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.343768",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000054": {
+    "content": "客户数据记录#24: 购买金额2200元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.344768",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000055": {
+    "content": "客户数据记录#25: 购买金额2250元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.344768",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000056": {
+    "content": "客户数据记录#26: 购买金额2300元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.345817",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000057": {
+    "content": "客户数据记录#27: 购买金额2350元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.346768",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000058": {
+    "content": "客户数据记录#28: 购买金额2400元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.346768",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  },
+  "MEM-000059": {
+    "content": "客户数据记录#29: 购买金额2450元",
+    "layer": "L3",
+    "importance": 0.5,
+    "timestamp": "2026-06-22T22:11:56.348273",
+    "recalled_count": 0,
+    "forgetting_index": 0.0
+  }
+}

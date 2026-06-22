@@ -45,6 +45,8 @@ class Shield:
         "AS-006": {"pattern": "sudo ", "severity": "HIGH"},
         "AS-007": {"pattern": "curl | bash", "severity": "CRITICAL"},
         "AS-008": {"pattern": "chmod 777", "severity": "MEDIUM"},
+        "AS-009": {"pattern": "wget ", "severity": "HIGH"},
+        "AS-010": {"pattern": " | sh", "severity": "CRITICAL"},
     }
 
     def __init__(self, agent_id: str = "default"):

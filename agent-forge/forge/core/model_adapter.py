@@ -36,6 +36,14 @@ MODEL_PRESETS = {
         "cost_per_1M_tokens": "$5/$15",
         "context_window": 2_000_000,
         "recommended_for": ["多模态", "超长上下文", "实时响应"]
+    },
+    "glm": {
+        "name": "GLM-5.2",
+        "api_base": "https://open.bigmodel.cn/api/paas/v4",
+        "strengths": ["reasoning", "chinese", "cost"],
+        "cost_per_1M_tokens": "¥0.5/¥1",
+        "context_window": 128_000,
+        "recommended_for": ["中文任务", "推理分析", "私密数据"]
     }
 }
 
